@@ -67,23 +67,53 @@ function short_code_function($atts)
 
 add_shortcode('short-code', 'short_code_function');
 
-add_action('before_my_name', function() {
+function load_post_type($rec_data)
+{
+    register_post_type('reg_pst_typ', $rec_data);
+}
+add_action('post_hook', 'load_post_type');
+
+add_action('before_my_name', function () {
+    global $wpdb;
     echo 'Full Name: ';
+    $result = $wpdb->get_var($wpdb->prepare("SELECT option_value FROM `wp_options` WHERE `option_name` = %s", 'full_name'));
+    $data =
+        [
+            'labels'      => array(
+                'name'          => __('Products', 'textdomain'),
+                'singular_name' => __('Product', 'textdomain'),
+            ),
+            'public'      => true,
+            'has_archive' => true,
+        ];
+    if ($result) {
+        print_r($result);
+        delete_option('full_name');
+    } else {
+        add_option('full_name', $data);
+        // isset( get_option('full_name') );
+    }
+    // do_action('post_hook', $data);
 });
 
-add_filter( 'filter_my_name', function( $name ) {
+add_filter('filter_my_name', function ($name) {
     return $name;
     // return 'Prakash Khadka';
-} );
+});
 
 // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv //
 // Fires when all plugins load.[plugins_loaded]
-function custom_function() {
+add_action('plugins_loaded', function () {
     require 'hook.php';
-}
-add_action('custom_hook', 'custom_funtion');
+});
 
-do_action('custom_hook');
+
+// function custom_function() {
+// require 'hook.php';
+// }
+// add_action('custom_hook', 'custom_function');
+
+// do_action('custom_hook');
 
 
 
