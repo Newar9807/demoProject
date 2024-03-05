@@ -1,0 +1,18 @@
+.rating-container {
+    margin: 20px 0;
+}
+
+.star-rating {
+    display: flex;
+}
+
+.star {
+    cursor: pointer;
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+.star:hover,
+.star.active {
+    color: gold;
+}

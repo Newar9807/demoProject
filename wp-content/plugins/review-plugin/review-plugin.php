@@ -1,30 +1,41 @@
 <?php
 
 /**
- * Plugin Name: Review Plugin
+ * Plugin Name: Samir Reviews
  * Plugin URI: https://thisispluginuri
  * Description: This is description for review plugin
  * Version: 1.0
  * Author: Samir Shrestha
  * Author URI: https://thisisauthoruri
- * Text Domain: review-plugin
+ * Text Domain: samir-reviews
  */
 
-if (!defined('ABSPATH')) {
+if (!defined('ABSPATH')) :
     header('Location: /');
     die;
-}
+endif;
 
 $css_path = plugins_url('assets/css/style.css', __FILE__);
 $js_path = plugins_url('assets/js/script.js', __FILE__);
+$prefix = 'samir_review_';
+
+$global_name_array = ['create_menu', 'load_style_and_script', 'meta_box_design', 'meta_box', 'save_to_db', 'display_meta_data'];
+
+// Generates the variables with names same as values in global_name_array
+foreach ($global_name_array as $val) {
+    $val = $prefix . $val;
+    $$val = $val;
+}
+
+add_action('init', $samir_review_create_menu);
 
 // Creates the menu option
-function create_menu()
+function samir_review_create_menu()
 {
-    $labels = ['name' => __('Review Plugins', 'review-plugin'), 'singular_name' => __('Review Plugin', 'review-plugin')];
+    $labels = ['name' => __('Review Plugins', 'samir-reviews'), 'singular_name' => __('Review Plugin', 'samir-reviews')];
     $icon_path = plugins_url('assets/images/star.png', __FILE__);
     register_post_type(
-        'menu_id',
+        'samir_reviews',
         [
             'labels' => $labels,
             'public' => true,
@@ -35,41 +46,32 @@ function create_menu()
     );
 }
 
-add_action('init', 'load_style_and_script');
-
 // Loads needed scripts and style
-function load_style_and_script()
+function samir_review_load_style_and_script()
 {
     global $css_path, $js_path;
     wp_enqueue_style('my-css', $css_path, false, '1.0');
     wp_enqueue_script('my-js', $js_path, false, '1.0');
-    create_menu();
 }
 
-function load_script()
-{
-    global $js_path;
-    wp_register_script('myfirstscript', $js_path, array('jquery', 'jquery-ui'), false, false);
-    wp_enqueue_script('myfirstscript');
-}
 
 // Creates the meta box
-function meta_box_design($post)
+function samir_review_meta_box_design($post)
 {
     $value = get_post_meta($post->ID, 'meta_key', true);
     $yesNo = get_post_meta($post->ID, 'yesNo', true);
     $name = "";
     $rating = "";
     $comment = "";
-    if (is_array($value)) {
+    if (is_array($value)) :
         $name = $value['name'];
         $rating = $value['rating'];
         $comment = $value['comment'];
-    }
+    endif;
 
     include 'common/topContainer.php';
 ?>
-    <?php if ($post->post_type == 'post') { ?>
+    <?php if ($post->post_type == 'post') : ?>
         <h1>Review Plugin</h1>
         <div class="forPost">
             <label for="radioButton" class="radioButtonTitle">Enable: </label>
@@ -82,7 +84,7 @@ function meta_box_design($post)
                 No
             </label>
         </div>
-    <?php } else { ?>
+    <?php else : ?>
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" value="<?= $name ?>" required>
 
@@ -97,7 +99,7 @@ function meta_box_design($post)
 
         <label for="comment">Comment:</label>
         <textarea id="comment" name="comment" rows="4" required><?= $comment ?></textarea>
-    <?php } ?>
+    <?php endif; ?>
     <!-- <button type="button" onclick="submitReview()">Submit Review</button> -->
 
 
@@ -105,18 +107,21 @@ function meta_box_design($post)
     include 'common/bottomContainer.php';
 }
 
-function meta_box()
+add_action('add_meta_boxes', $samir_review_meta_box);
+
+function samir_review_meta_box()
 {
     $menu_title = '<h2>Review Meta Box</h2>';
-    add_meta_box('meta_id', $menu_title, 'meta_box_design', ['menu_id', 'post']);
+    add_meta_box('meta_id', $menu_title, 'samir_review_meta_box_design', ['samir_reviews', 'post']);
 }
 
-add_action('add_meta_boxes', 'meta_box');
+
+add_action('save_post', $samir_review_save_to_db);
 
 // Saves data to database
-function save_from_meta(int $post_id)
+function samir_review_save_to_db(int $post_id)
 {
-    if (array_key_exists('name', $_POST) && array_key_exists('rating', $_POST) && array_key_exists('comment', $_POST)) {
+    if (array_key_exists('name', $_POST) && array_key_exists('rating', $_POST) && array_key_exists('comment', $_POST)) :
         $data = [
             'name' => $_POST['name'],
             'rating' => $_POST['rating'],
@@ -127,67 +132,19 @@ function save_from_meta(int $post_id)
             'meta_key',
             $data
         );
-    } elseif (array_key_exists('yesNo', $_POST)) {
+    elseif (array_key_exists('yesNo', $_POST)) :
         update_post_meta(
             $post_id,
             'yesNo',
             $_POST['yesNo']
         );
-    }
+    endif;
 }
 
-add_action('save_post', 'save_from_meta');
+add_action('the_content', $samir_review_display_meta_data);
 
-function display_meta_data()
+function samir_review_display_meta_data()
 {
-    // $inline_script = `$(document).ready(function () {
-    //     function submitReview() {
-    //         alert('Review submitted successfully!');
-    //         var name = $('#name').val();
-    //         var rating = $('#rating').val();
-    //         var comment = $('#comment').val();
-
-    //         // Validate the form
-    //         if (name.trim() === '' || comment.trim() === '') {
-    //             alert('Name and Comment are required fields. Please fill them out.');
-    //             return;
-    //         }
-
-    //         // Prepare the data for submission
-    //         var formData = {
-    //             name: name,
-    //             rating: rating,
-    //             comment: comment
-    //         };
-
-    //         // Assuming you want to send the data to a server using AJAX
-    //         $.ajax({
-    //             type: 'POST',
-    //             // url: 'dbStore/post.php',
-    //             url: 'post.php',
-    //             data: JSON.stringify(formData),
-    //             contentType: 'application/json',
-    //             success: function () {
-    //                 // Successful submission
-    //                 alert('Review submitted successfully!');
-    //                 // You can also reset the form if needed
-    //                 $('#name').val('');
-    //                 $('#rating').val('5');
-    //                 $('#comment').val('');
-    //             },
-    //             error: function () {
-    //                 // Failed submission
-    //                 alert('Failed to submit review. Please try again later.');
-    //             }
-    //         });
-    //     }
-
-    //     // Bind the submitReview function to the button click event
-    //     $('#submitBtn').on('click', submitReview);
-    // });`;
-    // wp_enqueue_script('custom-handler', 'https://code.jquery.com/jquery-3.6.4.min.js');
-    // wp_add_inline_script('custom-handler', $inline_script, false, 2.0);
-
     $yesNo = get_post_meta(get_the_ID(), 'yesNo', true);
 
     if ($yesNo == 'yes') :
@@ -195,8 +152,8 @@ function display_meta_data()
         <div class="main_container">
             <?php include 'common/topContainer.php'; ?>
             <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            <input type="hidden" id="hidden_id" name="hidden_id" value="<?= get_the_ID(); ?>">
+            <input type="text" id="name" class="input" name="name" autocomplete="off" required>
+            <input type="hidden" id="hidden_id" class="input" name="hidden_id" value="<?= get_the_ID(); ?>">
 
             <label for="rating">Rating:</label>
             <select id="rating" name="rating" required>
@@ -208,14 +165,129 @@ function display_meta_data()
             </select>
 
             <label for="comment">Comment:</label>
-            <textarea id="comment" name="comment" rows="4"></textarea>
+            <textarea id="comment" name="comment" rows="4" autocomplete="off"></textarea>
 
             <button type="submit">Submit Review</button>
             <?php include 'common/bottomContainer.php'; ?>
         </div>
 <?php
     endif;
-    load_style_and_script();
+    samir_review_load_style_and_script();
 }
 
-add_action('the_content', 'display_meta_data');
+if (isset($_POST['hidden_id'])) :
+    samir_review_save_to_post_db($_POST['hidden_id']);
+    unset($_POST['hidden_id']);
+endif;
+
+function samir_review_save_to_post_db()
+{
+    // Extacts the key of $_POST super-variable with values
+    extract($_POST);
+
+    global $wpdb;
+
+    // Custom SQL query to get the last post ID from the wp_posts table
+    $query = "SELECT ID FROM `{$wpdb->posts}` ORDER BY ID DESC LIMIT 1";
+    $target_post_id = ($wpdb->get_var($query)) + 1;
+
+
+    // Checking if the post with the given ID exists
+    if (get_post($target_post_id)) {
+        $post_data = [
+            'ID'           => $target_post_id,
+            'post_title'   => $name,
+            'post_content' => $comment,
+            'post_type'    => 'samir_reviews',
+        ];
+        $updated_post_id = wp_update_post($post_data);
+
+        if (!is_wp_error($updated_post_id)) {
+            echo "Post updated successfully. Updated Post ID: $updated_post_id";
+        } else {
+            echo "Failed to update post.";
+            die;
+        }
+    } else {
+        $post_data = [
+            'ID' => $target_post_id + 1,
+            'post_title'   => $name,
+            'post_content' => $comment,
+            'post_type'    => 'samir_reviews',
+        ];
+        $new_post_id = wp_insert_post($post_data);
+
+        if (!is_wp_error($new_post_id)) {
+            echo "New post created successfully. Post ID: $new_post_id";
+        } else {
+            echo "Failed to create new post.";
+            die;
+        }
+    }
+
+    $data = [
+        'name' => $name,
+        'rating' => $rating,
+        'comment' => $comment,
+    ];
+    update_post_meta(
+        $target_post_id,
+        'meta_key',
+        $data
+    );
+    $sam = 1;
+}
+
+
+//=>
+// add_action('wp_enqueue_scripts', 'my_rating_enqueue_scripts_styles');
+
+// function my_rating_enqueue_scripts_styles()
+// {
+//     wp_enqueue_script('my-rating-script', plugins_url('my-rating-plugin.js', __FILE__), array('jquery'), '1.0', true);
+
+//     // Pass the AJAX URL to script.js
+//     wp_localize_script('my-rating-script', 'myRatingAjax', array('ajaxurl' => plugins_url('dbStore/post.php', __FILE__)));
+
+//     wp_enqueue_style('my-rating-style', plugins_url('my-rating-plugin.css', __FILE__));
+// }
+
+
+// add_action('wp_ajax_my_rating_submit', 'my_rating_submit_callback');
+
+// function my_rating_submit_callback()
+// {
+//     $post_id = $_POST['post_id'];
+//     $rating = $_POST['rating'];
+
+//     // Save the rating to post meta
+//     update_post_meta($post_id, 'my_rating', $rating);
+
+//     wp_die(); // Always include this at the end of your callback
+// }
+
+// add_action('the_content', 'my_rating_display');
+
+// function my_rating_display($content)
+// {
+//     if (is_single() && in_the_loop()) {
+//         $post_id = get_the_ID();
+//         $rating = get_post_meta($post_id, 'my_rating', true);
+
+//         // Output the rating interface
+//         $output = '<div class="rating-container">';
+//         $output .= '<p>Rate this post:</p>';
+//         $output .= '<div class="star-rating" data-post-id="' . esc_attr($post_id) . '">';
+
+//         for ($i = 1; $i <= 5; $i++) {
+//             $output .= '<span class="star" data-rating="' . esc_attr($i) . '">★</span>';
+//         }
+
+//         $output .= '</div>';
+//         $output .= '</div>';
+
+//         return $content . $output;
+//     }
+
+//     return $content;
+// }
