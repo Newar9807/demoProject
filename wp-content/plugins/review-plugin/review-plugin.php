@@ -17,17 +17,28 @@ endif;
 
 $css_path = plugins_url('assets/css/style.css', __FILE__);
 $js_path = plugins_url('assets/js/script.js', __FILE__);
+
+$global_name_array = ['create_menu', 'load_style_and_script', 'meta_box_design', 'meta_box', 'save_to_db', 'display_meta_data', 'save_to_post_db', 'load_style_and_script', 'my_plugin_activation'];
 $prefix = 'samir_review_';
-
-$global_name_array = ['create_menu', 'load_style_and_script', 'meta_box_design', 'meta_box', 'save_to_db', 'display_meta_data'];
-
 // Generates the variables with names same as values in global_name_array
 foreach ($global_name_array as $val) {
     $val = $prefix . $val;
     $$val = $val;
 }
+// register_activation_hook(__FILE__, $samir_review_my_plugin_activation);
 
-add_action('init', $samir_review_create_menu);
+// function samir_review_my_plugin_activation()
+// {
+//     $global_name_array = ['create_menu', 'load_style_and_script', 'meta_box_design', 'meta_box', 'save_to_db', 'display_meta_data', 'save_to_post_db', 'load_style_and_script', 'my_plugin_activation'];
+//     $prefix = 'samir_review_';
+//     // Generates the variables with names same as values in global_name_array
+//     foreach ($global_name_array as $val) {
+//         $val = $prefix . $val;
+//         $$val = $val;
+//     }
+// }
+
+add_action('init', $samir_review_create_menu, 11);
 
 // Creates the menu option
 function samir_review_create_menu()
@@ -46,6 +57,7 @@ function samir_review_create_menu()
     );
 }
 
+add_action('wp_enqueue_scripts', $samir_review_load_style_and_script);
 // Loads needed scripts and style
 function samir_review_load_style_and_script()
 {
@@ -172,45 +184,23 @@ function samir_review_display_meta_data()
         </div>
 <?php
     endif;
-    samir_review_load_style_and_script();
+    // samir_review_load_style_and_script();
 }
 
-if (isset($_POST['hidden_id'])) :
-    samir_review_save_to_post_db($_POST['hidden_id']);
-    unset($_POST['hidden_id']);
-endif;
+// if (isset($_POST['hidden_id'])) :
+//     samir_review_save_to_post_db();
+//     unset($_POST['hidden_id']);
+// endif;
+
+add_action('init', $samir_review_save_to_post_db, 10);
 
 function samir_review_save_to_post_db()
 {
     // Extacts the key of $_POST super-variable with values
-    extract($_POST);
+    if (isset($_POST['hidden_id'])) :
+        extract($_POST);
 
-    global $wpdb;
-
-    // Custom SQL query to get the last post ID from the wp_posts table
-    $query = "SELECT ID FROM `{$wpdb->posts}` ORDER BY ID DESC LIMIT 1";
-    $target_post_id = ($wpdb->get_var($query)) + 1;
-
-
-    // Checking if the post with the given ID exists
-    if (get_post($target_post_id)) {
         $post_data = [
-            'ID'           => $target_post_id,
-            'post_title'   => $name,
-            'post_content' => $comment,
-            'post_type'    => 'samir_reviews',
-        ];
-        $updated_post_id = wp_update_post($post_data);
-
-        if (!is_wp_error($updated_post_id)) {
-            echo "Post updated successfully. Updated Post ID: $updated_post_id";
-        } else {
-            echo "Failed to update post.";
-            die;
-        }
-    } else {
-        $post_data = [
-            'ID' => $target_post_id + 1,
             'post_title'   => $name,
             'post_content' => $comment,
             'post_type'    => 'samir_reviews',
@@ -218,24 +208,26 @@ function samir_review_save_to_post_db()
         $new_post_id = wp_insert_post($post_data);
 
         if (!is_wp_error($new_post_id)) {
-            echo "New post created successfully. Post ID: $new_post_id";
+            // echo "New post created successfully. Post ID: $new_post_id";
         } else {
             echo "Failed to create new post.";
             die;
         }
-    }
 
-    $data = [
-        'name' => $name,
-        'rating' => $rating,
-        'comment' => $comment,
-    ];
-    update_post_meta(
-        $target_post_id,
-        'meta_key',
-        $data
-    );
-    $sam = 1;
+        $data = [
+            'name' => $name,
+            'rating' => $rating,
+            'comment' => $comment,
+        ];
+        update_post_meta(
+            $new_post_id,
+            'meta_key',
+            $data
+        );
+        unset($_POST['hidden_id']);
+    else:
+        do_action('wp_enqueue_scripts');
+    endif;
 }
 
 
