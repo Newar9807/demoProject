@@ -1,6 +1,13 @@
 <?php
 
-namespace samir_review;
+/**
+ * This is Admin class
+ * 
+ * @since 1.0
+ * 
+ */
+
+namespace nmspc\admin;
 
 class Admin
 {
@@ -29,68 +36,58 @@ class Admin
     private $js_path;
 
     /**
-     * Name of user.
+     * Stores name of user.
      * 
      * @var string
      * 
      */
     private $name = "";
-    
+
     /**
-     * Rating given by user.
+     * Stores rating given by user.
      * 
      * @var string
      * 
      */
     private $rating = "";
-    
+
     /**
-     * Comment of user.
+     * Stores comment of user.
      * 
      * @var string
      * 
      */
     private $comment = "";
-    
+
     /**
      * Trigger review block.
      * 
      * @var string
      * 
      */
-    private $yesNo = "no";
+    public $yesNo = "no";
 
     /**
-     * Constructor.
+     * Constructor where the path of css and js is stored.
      * 
      * @since 1.0
-     *  
+     * @return void
      * */
     public function __construct()
     {
-        // this is constructor for admin
         $this->css_path = plugins_url('assets/css/style.css', \oop_review_file);
         $this->js_path = plugins_url('assets/js/script.js', \oop_review_file);
 
-        // callable function is $key and hook is $value as it could be used multiple times
-        $this->global_name_array = [
-            'create_menu'           => 'init',
-            'meta_box'              => 'add_meta_boxes',
-            'call_meta_box_design'  => 'the_content',
-            'save_to_db'            => 'save_post',
-            'load_style_and_script' => 'wp_enqueue_scripts',
-        ];
-
-        foreach ($this->global_name_array as $key => $value) :
-            add_action($value, [$this, $key]);
-        endforeach;
+        add_action('init', [$this, 'create_menu']);
+        add_action('run_style', [$this, 'load_style_and_script']);
     }
 
     /**
-     * Creates the menu option and handles post method after submission.
+     * Creates the menu option and handles post method after submission
+     * after which it is redirected to home.
      * 
      * @since 1.0
-     * 
+     * @return void
      */
     public function create_menu()
     {
@@ -124,11 +121,9 @@ class Admin
                 'post_status' => 'publish',
             ]);
             if ($post_id) {
-                // Post created successfully, now save post meta
                 update_post_meta($post_id, 'oop_review', $meta_value);
             }
 
-            // Redirect or display a message as needed
             wp_redirect(home_url());
             exit;
         endif;
@@ -138,7 +133,7 @@ class Admin
      * Saves data to postmeta table of database.
      * 
      * @since 1.0
-     * 
+     * @return void
      */
     public function save_to_db(int $post_id)
     {
@@ -166,7 +161,7 @@ class Admin
      * Loads user scripts and style.
      * 
      * @since 1.0
-     * 
+     * @return void
      */
     public function load_style_and_script()
     {
@@ -178,59 +173,48 @@ class Admin
      * Adds meta box in post.
      * 
      * @since 1.0
-     * 
+     * @return void
      */
     public function meta_box()
     {
         $menu_title = '<h2>Review Meta Box</h2>';
-        add_meta_box('meta_id', $menu_title, [$this, 'call_meta_box_design'], ['samir_reviews', 'post'], 'normal', 'high');
+        add_meta_box('meta_id', $menu_title, [$this, 'meta_box_design_for_admin'], ['samir_reviews', 'post'], 'normal', 'high');
+        do_action('run_style');
     }
 
     /**
-     * Calls the private meta box design.
+     * Creates the meta box for both admin and user (Private Method).
      * 
      * @since 1.0
-     * 
+     * @param $post Can be null or the information of the post.
+     * @return void
      */
-    public function call_meta_box_design($arg)
+    public function meta_box_design_for_admin($post)
     {
-        $this->meta_box_design($arg);
-    }
-    
-    /**
-     * Creates the meta box.
-     * 
-     * @since 1.0
-     * 
-     */
-    private function meta_box_design($post)
-    {
-        if ($post) :
-            $value = get_post_meta($post->ID, 'meta_key', true);
-            $this->yesNo = get_post_meta($post->ID, 'yesNo', true);
-            if (is_array($value)) :
-                $this->name = $value['name'];
-                $this->rating = $value['rating'];
-                $this->comment = $value['comment'];
-            endif;
-
-            $header_template = dirname(oop_review_file) . '/includes/Public/header.php';
-            $footer_template = dirname(oop_review_file) . '/includes/Public/footer.php';
-            $for_post_template = dirname(oop_review_file) . '/includes/Public/for_post.php';
-            $for_review_template = dirname(oop_review_file) . '/includes/Public/for_review.php';
-            if (file_exists($header_template) && file_exists($footer_template) && file_exists($for_post_template) && file_exists($for_review_template)) :
-                if ($post->post_type == 'post') :
-                    require_once dirname(oop_review_file) . '/includes/Public/for_post.php';
-                else :
-                    require_once dirname(oop_review_file) . '/includes/Public/for_review.php';
-                endif;
-            endif;
-        else :
-            $this->yesNo = get_post_meta(get_the_ID(), 'yesNo', true);
-            if ($this->yesNo == 'yes') :
-                require_once dirname(oop_review_file) . '/includes/Public/for_review.php';
-                require_once dirname(oop_review_file) . '/includes/Public/load_reviews.php';
-            endif;
+        $value = get_post_meta($post->ID, 'meta_key', true);
+        $this->yesNo = get_post_meta($post->ID, 'yesNo', true);
+        if (is_array($value)) :
+            $this->name = $value['name'];
+            $this->rating = $value['rating'];
+            $this->comment = $value['comment'];
         endif;
+        if ($post->post_type == 'post') :
+            require_once dirname(oop_review_file) . '/includes/Public/for_post.php';
+        else :
+            require_once dirname(oop_review_file) . '/includes/Public/for_review.php';
+        endif;
+    }
+
+    /**
+     * Creates the meta box for both admin and user (Private Method).
+     * 
+     * @since 1.0
+     * @param $post Can be null or the information of the post.
+     * @return void
+     */
+    public function meta_box_design_for_user()
+    {
+        require_once dirname(oop_review_file) . '/includes/Public/for_review.php';
+        require_once dirname(oop_review_file) . '/includes/Public/load_reviews.php';
     }
 }

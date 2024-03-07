@@ -10,10 +10,17 @@ if ($posts_query->have_posts()) {
     <div class="comments-container">
         <div id="primary" class="content-area">
             <main id="main" class="site-main">
+                <?php
+                $count = 0;
+                // up:
+                // if ($count != 0) :
+                ?>
                 <header class="page-header">
                     <h1 class="page-title">Customer Reviews</h1>
                 </header>
                 <?php
+                //     goto down;
+                // endif;
                 while ($posts_query->have_posts()) :
                     $posts_query->the_post();
 
@@ -31,18 +38,29 @@ if ($posts_query->have_posts()) {
 
                             <article id="post-<?= get_the_ID() ?>" <?= $got_data['rating'] ?>>
                                 <div class="review-content">
-                                    <div class="reviewer-name">Reviewer Name: <?= $got_data['name'] ?></div>
-                                    <div class="review-comment">Comment: <?= $got_data['comment'] ?></div>
+                                    <div class="reviewer-name">Reviewer No: <?= ++$count ?></div>
+                                        <?php
+                                        echo '<span style="color: gold;">';
+                                        for ($i = 0; $i < $got_data['rating']; $i++) {
+                                            echo "★";
+                                        }
+                                        echo '</span>' . PHP_EOL;
+                                        ?>
                                     <div class="review-rating">Rating: <?= $got_data['rating'] ?></div>
+                                    <div class="review-comment">Name: <?= $got_data['name'] ?></div>
+                                    <div class="review-comment">Comment: <?= $got_data['comment'] ?></div>
                                 </div>
                             </article>
 
                         </div>
 
-<br />
+                        <br />
             <?php
                     endif;
                 endwhile;
+
+                // goto up;
+                // down:
                 wp_reset_postdata(); // Restore the global $post variable
             } else {
                 // No posts found
@@ -52,6 +70,6 @@ if ($posts_query->have_posts()) {
             </main>
         </div>
 
-        
+
     </div>
     <?php

@@ -18,13 +18,11 @@ if (!defined('ABSPATH')) {
 $prefix = 'oop_review_';
 
 const oop_review_file = __FILE__;
+
 const oop_review_directory = __DIR__;
 
-// imported required file
-require_once oop_review_directory . '/includes/Admin/Admin.php';
+require_once oop_review_directory . '/includes/Plugin.php';
 
-// for better readability
-use samir_review\Admin as admin;
+use nmspc\plugin\Plugin as admin;
 
-// Creating an instance of the admin class
-$oop_review_instance = new admin();
+$oop_review_plugin_instance = new admin();

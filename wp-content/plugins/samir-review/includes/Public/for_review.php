@@ -1,7 +1,7 @@
 <?php require_once 'header.php'; ?>
-<label for="name">Name:</label>
-<input type="text" id="name" name="name" value="<?= $this->name ?>" required>
 <?php if ($this->yesNo == 'yes') : ?>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" value="<?= $this->name ?>" autocomplete="off" required>
     <input type="hidden" id="hidden_id" class="input" name="hidden_id" value="<?= get_the_ID(); ?>">
 <?php endif; ?>
 <label for="rating">Rating:</label>
@@ -13,11 +13,11 @@
     <option value="1" <?php selected($this->rating, '1'); ?>>1 - Poor</option>
 </select>
 
-<label for="comment">Comment:</label>
-<textarea id="comment" name="comment" rows="4" required><?= $this->comment ?></textarea>
-
 <?php if ($this->yesNo == 'yes') : ?>
-    <button type="submit" name="submit">Submit Review</button>
+    <label for="comment">Comment:</label>
+    <textarea id="comment" name="comment" rows="4" required><?= $this->comment ?></textarea>
+
+    <button type="submit" name="submit" id="btn">Submit Review</button>
 <?php
 endif;
 require_once 'footer.php';
