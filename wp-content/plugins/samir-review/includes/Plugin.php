@@ -37,8 +37,8 @@ class Plugin
 
     /**
      * This is Constructor where instance of admin class is created and
-     * All Callable function and hook are stored in associated array as 
-     * $key and $value respectively as hook could be used multiple times
+     * All Callable function and hook are stored in associated array 
+     * as $key and $value respectively because hook could be used multiple times
      * and key could not be repeated.
      * 
      * @since 2.0
@@ -46,13 +46,12 @@ class Plugin
      */
     public function __construct()
     {
-
         $this->oop_review_admin_instance = new admin();
         $this->oop_review_admin_instance->yesNo == "no";
 
         $this->global_name_array = [
             'meta_box'              => 'add_meta_boxes',
-            'meta_box_design'       => 'the_content',
+            'meta_box_design'       => 'template_redirect',
             'save_to_db'            => 'save_post',
             'load_style_and_script' => 'wp_enqueue_scripts',
         ];

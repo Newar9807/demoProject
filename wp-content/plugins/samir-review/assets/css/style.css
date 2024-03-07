@@ -72,12 +72,10 @@ label {
     text-align: center;
 }
 
-/* Style for the review list container */
 .review-list {
     margin: 20px;
 }
 
-/* Style for each individual review */
 .review {
     background-color: #fff;
     border: 1px solid #ddd;
@@ -85,43 +83,36 @@ label {
     padding: 15px;
 }
 
-/* Style for the reviewer name */
 .reviewer-name {
     font-weight: bold;
 }
 
-/* Style for the review rating */
 .review-rating {
     margin-top: 5px;
     color: #f39c12;
-    /* You can change the color based on your rating scale */
+    
 }
 
-/* Style for the review comment */
 .review-comment {
     margin-top: 10px;
     line-height: 1.5;
 }
 
-/* Style for the overall page layout */
 #primary {
     max-width: 800px;
     margin: 0 auto;
 }
 
-/* Style for the page header */
 .page-header {
     text-align: center;
     margin-bottom: 20px;
 }
 
-/* Style for the page title */
 .page-title {
     font-size: 24px;
     margin-bottom: 10px;
 }
 
-/* Style for the overall page content */
 #main {
     padding: 20px;
 }
