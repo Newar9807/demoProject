@@ -1,0 +1,31 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "wptravelenginetripblocks/booking",
+  "version": "1.0.0",
+  "title": "Trip Booking",
+  "category": "widgets",
+  "description": "Display a booking form for a trip.",
+  "example": {},
+  "textdomain": "wptravelengine-trip-blocks",
+  "attributes": {
+    "padding": {
+      "type": "object",
+      "default": {
+        "top": "48px",
+        "right": "0px",
+        "bottom": "24px",
+        "left": "0px"
+      }
+    },
+    "margin": {
+      "type": "object",
+      "default": {
+        "top": "0px",
+        "right": "0px",
+        "bottom": "0px",
+        "left": "0px"
+      }
+    }
+  }
+}

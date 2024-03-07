@@ -1,0 +1,127 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "wptravelenginetripblocks/trip-booking-button",
+  "title": "Trip Booking Button",
+  "category": "design",
+  "description": "Prompt visitors to take action with a button-style link.",
+  "keywords": [
+    "link"
+  ],
+  "attributes": {
+    "textColor": {
+      "type": "object",
+      "default": {
+        "initial": "#fff",
+        "hover": "#fff"
+      },
+      "control": {
+        "type": "color",
+        "labels": {
+          "initial": {
+            "label": "Text",
+            "style": "color"
+          },
+          "hover": {
+            "label": "Hover",
+            "style": "color:hover"
+          }
+        }
+      },
+      "selectors": "%WRAPPER% .wpte-bf-btn"
+    },
+    "background": {
+      "type": "object",
+      "default": {
+        "initial": "#147dfe",
+        "hover": "#147dfe"
+      },
+      "control": {
+        "type": "color",
+        "labels": {
+          "initial": {
+            "label": "Background",
+            "style": "background"
+          },
+          "hover": {
+            "label": "Hover",
+            "style": "background:hover"
+          }
+        }
+      },
+      "selectors": "%WRAPPER% .wpte-bf-btn"
+    },
+    "text": {
+      "type": "rich-text"
+    },
+    "alignment": {
+      "type": "string",
+      "label": "Alignment",
+      "default": "center",
+      "control": {
+        "type": "alignment"
+      },
+      "panel": "-button-"
+    },
+    "padding": {
+      "type": "object",
+      "default": {
+        "top": "16px",
+        "right": "16px",
+        "bottom": "16px",
+        "left": "16px"
+      }
+    },
+    "margin": {
+      "type": "object",
+      "default": {
+        "top": "0px",
+        "right": "0px",
+        "bottom": "0px",
+        "left": "0px"
+      }
+    },
+    "border": {
+      "type": "object",
+      "default": {
+        "width": "",
+        "color": "",
+        "style": ""
+      }
+    },
+    "borderRadius": {
+      "type": "object",
+      "default": {
+        "top": "4px",
+        "right": "4px",
+        "bottom": "4px",
+        "left": "4px"
+      }
+    },
+    "fullWidth": {
+      "type": "boolean",
+      "label": "Full Width",
+      "default": true,
+      "control": {
+        "type": "switch"
+      },
+      "panel": "-button-"
+    }
+  },
+  "supports": {
+    "wptravelenginetripblocks": {
+      "panels": {
+        "-button-": {
+          "title": "Button"
+        },
+        "colors": {
+          "link": false
+        }
+      }
+    }
+  },
+  "viewScript": [
+    "wte-redux",
+    "jquery-fancy-box"
+  ]
+}

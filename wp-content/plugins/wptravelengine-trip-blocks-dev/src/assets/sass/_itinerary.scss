@@ -1,0 +1,1034 @@
+.itinerary .itinerary-row .accordion-tabs-toggle .rotator {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid var(--primary-color);
+  position: absolute;
+  top: 6px;
+  right: 0;
+  transform: unset;
+}
+
+.itinerary .itinerary-row .accordion-tabs-toggle .rotator::before,
+.itinerary .itinerary-row .accordion-tabs-toggle .rotator::after {
+  all: unset;
+  content: "";
+  width: 2px !important;
+  height: 8px !important;
+  border-radius: 2px;
+  background-color: var(--primary-color);
+  position: absolute;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  transition: all 0.3s ease;
+}
+
+.itinerary .itinerary-row .accordion-tabs-toggle .rotator::after {
+  transform: translate(-50%, -50%) rotate(90deg) !important;
+}
+
+.itinerary .itinerary-row .accordion-tabs-toggle.active .rotator::before {
+  transform: translate(-50%, -50%) rotate(90deg) !important;
+  opacity: 0;
+}
+
+.itinerary .itinerary-row .accordion-tabs-toggle.active .rotator::after {
+  opacity: 1;
+}
+
+.altitude-chart-container {
+  width: 100%;
+}
+
+//**==== itinerary ====**//
+.itinerary,
+.wte-trip-itinerary-v2 {
+
+  .title,
+  .itinerary-title {
+    font-size: 18px;
+    color: rgba(#061626, 0.8);
+    font-weight: 500;
+    margin: 0;
+    margin-bottom: 0;
+
+    @media (max-width: 767px) {
+      font-size: 16px;
+    }
+  }
+
+  .title {
+    // color: rgba(#061626, .6);
+    margin-right: 6px !important;
+  }
+
+  .itenary-detail-gallery {
+    clear: both;
+    margin-top: 32px;
+
+    .mCSB_horizontal.mCSB_inside>.mCSB_container {
+      margin: 0;
+    }
+  }
+
+  .itinerary-row {
+    padding-bottom: calc(var(--item-spacing) / 2);
+    margin-bottom: calc(var(--item-spacing) / 2) !important;
+    margin: 0 0 24px 45px;
+    position: relative;
+    border: none;
+    border-bottom: 1px solid rgba(#040f1a, 0.1);
+    background: none;
+
+    &::before {
+      content: "";
+      width: 0;
+      height: 100%;
+      border-left: 1px solid var(--primary-color);
+      background: none;
+      position: absolute;
+      top: 5px;
+      left: -30px;
+      opacity: 0.1;
+    }
+
+    &:last-child {
+      margin-bottom: 0 !important;
+      border-bottom: 0;
+      padding-bottom: 0;
+
+      &::before {
+        content: none;
+      }
+    }
+
+    .title {
+      position: relative;
+      white-space: nowrap;
+
+      &::before {
+        content: "";
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: var(--primary-color);
+        position: absolute;
+        left: -30px;
+        top: 14px;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    .itinerary-content {
+      >*:first-child:not(.itinerary-title) {
+        margin-top: 16px;
+      }
+
+      .content {
+        img {
+          @media (max-width: 767px) {
+            float: none;
+          }
+        }
+      }
+    }
+
+    &:first-child,
+    &.advanced-itinerary-row:first-child,
+    &:last-child {
+      .title {
+        &::before {
+          width: 30px;
+          height: 30px;
+          background-image: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9 1.5C7.4087 1.5 5.88258 2.13214 4.75736 3.25736C3.63214 4.38258 3 5.9087 3 7.5C3 11.55 8.2875 16.125 8.5125 16.32C8.64835 16.4362 8.82124 16.5 9 16.5C9.17877 16.5 9.35165 16.4362 9.4875 16.32C9.75 16.125 15 11.55 15 7.5C15 5.9087 14.3679 4.38258 13.2426 3.25736C12.1174 2.13214 10.5913 1.5 9 1.5ZM9 14.7375C7.4025 13.2375 4.5 10.005 4.5 7.5C4.5 6.30653 4.97411 5.16193 5.81802 4.31802C6.66193 3.47411 7.80653 3 9 3C10.1935 3 11.3381 3.47411 12.182 4.31802C13.0259 5.16193 13.5 6.30653 13.5 7.5C13.5 10.005 10.5975 13.245 9 14.7375ZM9 4.5C8.40666 4.5 7.82664 4.67595 7.33329 5.00559C6.83994 5.33524 6.45542 5.80377 6.22836 6.35195C6.0013 6.90013 5.94189 7.50333 6.05764 8.08527C6.1734 8.66721 6.45912 9.20176 6.87868 9.62132C7.29824 10.0409 7.83279 10.3266 8.41473 10.4424C8.99667 10.5581 9.59987 10.4987 10.1481 10.2716C10.6962 10.0446 11.1648 9.66006 11.4944 9.16671C11.8241 8.67336 12 8.09334 12 7.5C12 6.70435 11.6839 5.94129 11.1213 5.37868C10.5587 4.81607 9.79565 4.5 9 4.5ZM9 9C8.70333 9 8.41332 8.91203 8.16665 8.7472C7.91997 8.58238 7.72771 8.34811 7.61418 8.07403C7.50065 7.79994 7.47094 7.49834 7.52882 7.20736C7.5867 6.91639 7.72956 6.64912 7.93934 6.43934C8.14912 6.22956 8.41639 6.0867 8.70737 6.02882C8.99834 5.97094 9.29994 6.00065 9.57403 6.11418C9.84811 6.22771 10.0824 6.41997 10.2472 6.66665C10.412 6.91332 10.5 7.20333 10.5 7.5C10.5 7.89782 10.342 8.27936 10.0607 8.56066C9.77936 8.84196 9.39783 9 9 9Z' fill='white'/%3E%3C/svg%3E%0A");
+          background-size: 18px 18px;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+      }
+    }
+
+    &:not(:last-child) {
+      &::before {
+        height: calc(100% + 32px);
+      }
+    }
+
+    .itinerary-content {
+      display: none;
+    }
+
+    .itinerary-content.show {
+      display: block;
+    }
+  }
+
+
+  .wte-itinerary-head-wrap {
+    display: flex;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .accordion-tabs-toggle {
+    text-decoration: none;
+
+    >.rotator {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 2px solid var(--primary-color);
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+
+      &::before,
+      &::after {
+        content: "";
+        width: 2px !important;
+        height: 8px !important;
+        border-radius: 2px;
+        background-color: var(--primary-color);
+        position: absolute;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        transition: all 0.3s ease;
+      }
+
+      &::after {
+        transform: translate(-50%, -50%) rotate(90deg) !important;
+      }
+    }
+
+    &.active {
+      >.rotator {
+        &::before {
+          transform: translate(-50%, -50%) rotate(90deg) !important;
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  .itinerary-content {
+    display: block;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    will-change: max-height;
+
+    &.active {
+      display: block;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+}
+
+//**==== Advance Itinerary ====**//
+
+.itinerary {
+  .itinerary-row {
+    .wte-itinerary-head-wrap {
+      display: flex;
+    }
+
+    .accordion-tabs-toggle {
+      border: none;
+      flex-grow: 1;
+      padding: 0 32px 0 0 !important;
+
+      &::after {
+        content: none !important;
+      }
+
+      .rotator {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        border: 2px solid var(--primary-color);
+        position: absolute;
+        top: 6px;
+        right: 0;
+        transform: unset;
+
+        &::before,
+        &::after {
+          all: unset;
+          content: "";
+          width: 2px !important;
+          height: 8px !important;
+          border-radius: 2px;
+          background-color: var(--primary-color);
+          position: absolute;
+          top: 50% !important;
+          left: 50% !important;
+          transform: translate(-50%, -50%) !important;
+          transition: all .3s ease;
+        }
+
+        &::after {
+          transform: translate(-50%, -50%) rotate(90deg) !important;
+        }
+      }
+
+      &.active {
+
+        .rotator {
+          &::before {
+            transform: translate(-50%, -50%) rotate(90deg) !important;
+            opacity: 0;
+          }
+
+          &::after {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+
+  .itinerary-detail-additional-info {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -8px -30px;
+    padding-top: 24px !important;
+
+    [class*="itinerary-"] {
+      border-right: none;
+      margin: 8px 30px;
+      color: rgba(#061626, .6);
+      display: inline-flex;
+      align-items: center;
+
+      .itinierary-icon-wrap {
+        display: flex;
+        align-items: center;
+        height: 1.5em;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+
+        &:hover {
+          color: var(--primary-color);
+        }
+      }
+    }
+
+    >.itinerary-sleep-mode {
+      .label {
+        a {
+          display: inline-flex;
+          align-items: center;
+
+          &:hover {
+            span {
+              color: var(--primary-color);
+            }
+          }
+        }
+
+        span {
+          position: static;
+          margin-left: 4px;
+
+          path {
+            fill: currentColor;
+          }
+        }
+      }
+    }
+  }
+}
+
+.advanced-itinerary-row .accordion-tabs-toggle {
+  display: block;
+  position: relative;
+  color: #232323;
+  text-decoration: none;
+  padding-right: 25px;
+  flex-grow: 1;
+}
+
+.advanced-itinerary-row .accordion-tabs-toggle .custom-toggle-tabs {
+  position: absolute;
+  top: 10px;
+  right: 0;
+  width: 15px;
+  height: 15px;
+  overflow: hidden;
+  text-indent: 30px;
+  white-space: nowrap;
+  -webkit-transition: all ease 0.35s;
+  -moz-transition: all ease 0.35s;
+  transition: all ease 0.35s;
+}
+
+.advanced-itinerary-row .accordion-tabs-toggle .custom-toggle-tabs.rotator {
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+
+.advanced-itinerary-row .accordion-tabs-toggle .custom-toggle-tabs.open,
+.advanced-itinerary-row .accordion-tabs-toggle .custom-toggle-tabs.rotator.open {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.advanced-itinerary-row .accordion-tabs-toggle .custom-toggle-tabs::before,
+.advanced-itinerary-row .accordion-tabs-toggle .custom-toggle-tabs::after {
+  content: "";
+  background: #333;
+  width: 100%;
+  height: 2px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  -webkit-transition: all ease 0.35s;
+  -moz-transition: all ease 0.35s;
+  transition: all ease 0.35s;
+}
+
+.advanced-itinerary-row .accordion-tabs-toggle .custom-toggle-tabs::after {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+.advanced-itinerary-row .accordion-tabs-toggle .custom-toggle-tabs.open::after {
+  opacity: 0;
+}
+
+.advanced-itinerary-row .accordion-tabs-toggle .title {
+  float: none;
+  margin-right: 0;
+  font-size: 20px;
+  line-height: 1.75;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.advanced-itinerary-row .accordion-tabs-toggle .title .itinerary-day {
+  display: flex;
+  flex-direction: column;
+  flex: initial;
+}
+
+.advanced-itinerary-row .accordion-tabs-toggle .title span:not(.itinerary-day) {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.advanced-itinerary-row .accordion-tabs-toggle .title .itinerary-day+span {
+  padding-left: 10px;
+}
+
+.expand-all-itinerary {
+  display: inline-block;
+  margin-bottom: 32px;
+}
+
+.expand-all-itinerary svg {
+  font-size: 20px;
+  margin-right: 10px;
+  position: relative;
+  top: 2px;
+}
+
+.advanced-itinerary-row .accordion-tabs-toggle {
+  display: block;
+  position: relative;
+  color: #232323;
+  text-decoration: none;
+  padding-right: 25px;
+}
+
+.advanced-itinerary-row .accordion-tabs-toggle .custom-toggle-tabs {
+  position: absolute;
+  top: 10px;
+  right: 0;
+  width: 15px;
+  height: 15px;
+  overflow: hidden;
+  text-indent: 30px;
+  white-space: nowrap;
+  -webkit-transition: all ease 0.35s;
+  -moz-transition: all ease 0.35s;
+  transition: all ease 0.35s;
+}
+
+.advanced-itinerary-row .accordion-tabs-toggle .custom-toggle-tabs.rotator {
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+
+.advanced-itinerary-row .accordion-tabs-toggle .custom-toggle-tabs.open,
+.advanced-itinerary-row .accordion-tabs-toggle .custom-toggle-tabs.rotator.open {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.advanced-itinerary-row .accordion-tabs-toggle .custom-toggle-tabs::before,
+.advanced-itinerary-row .accordion-tabs-toggle .custom-toggle-tabs::after {
+  content: "";
+  background: #333;
+  width: 100%;
+  height: 2px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  -webkit-transition: all ease 0.35s;
+  -moz-transition: all ease 0.35s;
+  transition: all ease 0.35s;
+}
+
+.advanced-itinerary-row .accordion-tabs-toggle .custom-toggle-tabs::after {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+.advanced-itinerary-row .accordion-tabs-toggle .custom-toggle-tabs.open::after {
+  opacity: 0;
+}
+
+.advanced-itinerary-row .accordion-tabs-toggle .title {
+  float: none;
+  margin-right: 0;
+  font-size: 20px;
+  line-height: 1.75;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.advanced-itinerary-row .accordion-tabs-toggle .title .itinerary-day {
+  display: flex;
+  flex-direction: column;
+  flex: initial;
+}
+
+.advanced-itinerary-row .accordion-tabs-toggle .title span:not(.itinerary-day) {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.advanced-itinerary-row .accordion-tabs-toggle .title .itinerary-day+span {
+  padding-left: 10px;
+}
+
+.itenary-detail-gallery::before,
+.itenary-detail-gallery::after {
+  content: "";
+  display: table;
+  line-height: 0;
+}
+
+.itenary-detail-gallery::after {
+  clear: both;
+}
+
+.itenary-detail-gallery {
+  white-space: nowrap;
+}
+
+.itenary-detail-gallery a {
+  width: 90px;
+  margin-right: 10px;
+  display: inline-block;
+  position: relative;
+}
+
+.itenary-detail-gallery a::before {
+  content: "";
+  background-color: rgba(0, 0, 0, 0.5);
+  background-image: url('data:image/svg+xml; utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="%23fff" d="M312 196v24c0 6.6-5.4 12-12 12h-68v68c0 6.6-5.4 12-12 12h-24c-6.6 0-12-5.4-12-12v-68h-68c-6.6 0-12-5.4-12-12v-24c0-6.6 5.4-12 12-12h68v-68c0-6.6 5.4-12 12-12h24c6.6 0 12 5.4 12 12v68h68c6.6 0 12 5.4 12 12zm196.5 289.9l-22.6 22.6c-4.7 4.7-12.3 4.7-17 0L347.5 387.1c-2.3-2.3-3.5-5.3-3.5-8.5v-13.2c-36.5 31.5-84 50.6-136 50.6C93.1 416 0 322.9 0 208S93.1 0 208 0s208 93.1 208 208c0 52-19.1 99.5-50.6 136h13.2c3.2 0 6.2 1.3 8.5 3.5l121.4 121.4c4.7 4.7 4.7 12.3 0 17zM368 208c0-88.4-71.6-160-160-160S48 119.6 48 208s71.6 160 160 160 160-71.6 160-160z"></path></svg>');
+  background-size: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  -webkit-transition: all ease 0.35s;
+  -moz-transition: all ease 0.35s;
+  transition: all ease 0.35s;
+}
+
+.itenary-detail-gallery a:hover::before {
+  background-size: 20px;
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+
+.itenary-detail-gallery a img {
+  vertical-align: top;
+}
+
+.itenary-detail-gallery .mCSB_horizontal.mCSB_inside>.mCSB_container {
+  margin-bottom: 20px;
+}
+
+.itenary-detail-gallery .mCSB_scrollTools.mCSB_scrollTools_horizontal {
+  height: 11px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 50px;
+}
+
+.itenary-detail-gallery .mCSB_scrollTools .mCSB_draggerContainer {
+  left: 3px;
+  right: 3px;
+}
+
+.itenary-detail-gallery .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar {
+  margin: 3px 0;
+  height: 5px;
+}
+
+.itenary-detail-gallery .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_draggerRail {
+  height: 11px;
+  margin: auto 0;
+}
+
+.itenary-detail-gallery .mCSB_scrollTools .mCSB_draggerRail {
+  background: transparent;
+}
+
+.itenary-detail-gallery .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.itenary-detail-gallery .mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar,
+.itenary-detail-gallery .mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar,
+.itenary-detail-gallery .mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.mCSB_scrollTools.mCSB_scrollTools_horizontal a+.mCSB_draggerContainer {
+  float: left;
+}
+
+.itinerary-detail-additional-info {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.itinerary-detail-additional-info>div[class*="itinerary-"] {
+  margin-right: 10px;
+  padding-right: 10px;
+  border-right: 1px solid rgba(0, 0, 0, 0.07);
+  line-height: 1.5;
+  font-size: 1em;
+  color: #232323;
+}
+
+.itinerary-detail-additional-info>div[class*="itinerary-"]:last-child {
+  margin-right: 0;
+  padding-right: 0;
+  border-right: none;
+}
+
+.itinerary-detail-additional-info>div[class*="itinerary-"] a {
+  color: #232323;
+}
+
+.itinerary-detail-additional-info>div[class*="itinerary-"] a:hover {
+  text-decoration: underline;
+}
+
+.itinerary-detail-additional-info>div[class*="itinerary-"] .label {
+  float: none;
+  padding-top: 0;
+}
+
+.itinerary-detail-additional-info>div[class*="itinerary-"] svg {
+  margin-right: 7px;
+}
+
+.itinerary-detail-additional-info .itinierary-icon-wrap svg path {
+  fill: var(--primary-color);
+}
+
+.itinerary-detail-additional-info>.itinerary-sleep-mode .label span {
+  position: relative;
+  top: -5px;
+  font-size: 14px;
+  display: flex;
+  width: 1em;
+  height: 1em;
+  background: var(--primary-color);
+  border-radius: 50%;
+  color: #fff !important;
+  justify-content: center;
+  align-items: center;
+}
+
+.itinerary-sleep-mode .label .svg-inline--fa {
+  font-size: 10px;
+}
+
+.itinerary-detail-additional-info>.itinerary-sleep-mode .label a:hover span {
+  color: #333;
+}
+
+.itinerary-detail-additional-info>.itinerary-sleep-mode .label span svg {
+  margin: 0;
+  width: 1em;
+  height: 1em;
+}
+
+.tab-content {
+  z-index: unset;
+}
+
+.content-additional-sleep-mode {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.8);
+  -webkit-transition: all ease 0.35s;
+  -moz-transition: all ease 0.35s;
+  transition: all ease 0.35s;
+}
+
+.additional-sleep-mode-inner {
+  position: relative;
+  padding-right: 50px;
+  max-width: calc(100% - 30px);
+  max-height: calc(100% - 30px);
+}
+
+.content-additional-sleep-mode .wte-ai-close-button {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  overflow: hidden;
+  text-indent: 40px;
+  white-space: nowrap;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.content-additional-sleep-mode .wte-ai-close-button::before,
+.content-additional-sleep-mode .wte-ai-close-button::after {
+  content: "";
+  background: #999;
+  width: 20px;
+  height: 2px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.content-additional-sleep-mode .wte-ai-close-button::after {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.content-additional-sleep-mode .wte-ai-close-button:hover::before,
+.content-additional-sleep-mode .wte-ai-close-button:hover::after {
+  background: #fff;
+}
+
+.content-additional-sleep-mode .advanced-sleep-mode-content {
+  background: #fff;
+  /* width: calc(100% - 30px); */
+  max-width: 800px;
+  border-radius: 5px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  padding: 20px 5px 20px 60px;
+  max-height: 480px;
+  margin: auto;
+  height: calc(100% - 30px);
+}
+
+.content-additional-sleep-mode .advanced-sleep-mode-content h1,
+.content-additional-sleep-mode .advanced-sleep-mode-content h2,
+.content-additional-sleep-mode .advanced-sleep-mode-content h3,
+.content-additional-sleep-mode .advanced-sleep-mode-content h4,
+.content-additional-sleep-mode .advanced-sleep-mode-content h5,
+.content-additional-sleep-mode .advanced-sleep-mode-content h6 {
+  display: inline-block;
+}
+
+.content-additional-sleep-mode .advanced-sleep-mode-content-inner {
+  height: 100%;
+}
+
+.advanced-sleep-mode-content .mCSB_vertical.mCSB_inside>.mCSB_container {
+  margin-bottom: 20px;
+}
+
+.advanced-sleep-mode-content .mCSB_scrollTools.mCSB_scrollTools_vertical {
+  width: 11px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 50px;
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+
+.advanced-sleep-mode-content .mCSB_scrollTools.mCSB_scrollTools_vertical .mCSB_dragger .mCSB_dragger_bar {
+  margin: 0 auto;
+  width: 5px;
+}
+
+.advanced-sleep-mode-content .mCSB_scrollTools.mCSB_scrollTools_vertical .mCSB_draggerRail {
+  width: 11px;
+  margin: auto;
+}
+
+.advanced-sleep-mode-content .mCSB_scrollTools .mCSB_draggerRail {
+  background: transparent;
+}
+
+.advanced-sleep-mode-content .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.advanced-sleep-mode-content .mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar,
+.advanced-sleep-mode-content .mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar,
+.advanced-sleep-mode-content .mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.advanced-itinerary-row .title,
+.advanced-itinerary-row .itinerary-title {
+  display: block;
+  font-size: 1em;
+  color: #000;
+  font-weight: inherit;
+  margin: 0;
+}
+
+.mfp-image-holder .mfp-close,
+.mfp-iframe-holder .mfp-close {
+  width: auto;
+  text-align: center;
+  padding: 0 10px;
+}
+
+button.mfp-close,
+button.mfp-arrow {
+  background: none;
+  border: none;
+}
+
+button.mfp-close:hover,
+button.mfp-arrow:hover,
+button.mfp-close:active,
+button.mfp-arrow:active,
+button.mfp-close:focus,
+button.mfp-arrow:focus {
+  background: none;
+}
+
+@media screen and (max-width: 960px) {
+  .additional-sleep-mode-inner {
+    padding-right: 0;
+    padding-top: 45px;
+  }
+
+  .content-additional-sleep-mode .advanced-sleep-mode-content {
+    padding-left: 25px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .advanced-itinerary-row .accordion-tabs-toggle .title {
+    flex-direction: column;
+  }
+
+  .advanced-itinerary-row .accordion-tabs-toggle .title .itinerary-day+span {
+    padding-left: 0;
+  }
+
+  .itinerary-detail-additional-info>div[class*="itinerary-"] {
+    font-size: 0.8888em;
+  }
+}
+
+/* Chart Settings Styles */
+.screen-canvas-wrap {
+  height: 350px;
+  overflow: scroll;
+  overflow-y: hidden;
+}
+
+#altitude-chart-screen {
+  height: 350px;
+  width: auto;
+  min-width: 100%;
+}
+
+/* Advance Itenary Plugin Fixes */
+.tab-content .altitude-unit-switches {
+  margin: 14px 0px;
+}
+
+.tab-content label {
+  display: inline-flex;
+  align-items: center;
+}
+
+
+.tab-content .altitude-unit-switches span>input[type="radio"] {
+  display: none;
+}
+
+
+.tab-content .altitude-unit-switches span>input[type="radio"]+*::before {
+  content: none;
+  display: inline-block;
+  vertical-align: middle;
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.3rem;
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #666666;
+}
+
+
+.tab-content .altitude-unit-switches span>input[type="radio"]:checked+*::before {
+  background: radial-gradient(teal 0%, teal 40%, transparent 50%, transparent);
+  border-color: var(--primary-color);
+}
+
+.tab-content .altitude-unit-switches span>input[type="radio"]:checked+* {
+  color: var(--primary-color);
+}
+
+.altitude-unit-switches span label {
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.altitude-unit-switches span label[for="elevation-unit-m"] {
+  margin-right: 20px;
+}
+
+.tab-content .altitude-chart-container {
+  margin: 0 0 30px;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+  position: relative;
+  min-width: 100%;
+}
+
+.tab-content .altitude-unit-switches {
+  margin-left: 20px;
+  display: block;
+}
+
+.altitude-unit-switcher {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Scroll bar css */
+.tab-content .screen-canvas-wrap::-webkit-scrollbar-track {
+  height: 5px;
+  border: 1px solid #e4e4e4;
+  border-radius: 5px;
+  padding: 2px 0;
+  background-color: #e4e4e4;
+}
+
+.tab-content .screen-canvas-wrap::-webkit-scrollbar {
+  height: 6px;
+}
+
+.tab-content .screen-canvas-wrap::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  cursor: pointer;
+}
+
+.tab-content .screen-canvas-wrap::-webkit-scrollbar-thumb:hover {
+  border-radius: 5px;
+  background-color: #32b67bb9;
+  border: 1px solid #32b67bb9;
+  cursor: pointer;
+}
+
+.tab-content .expand-all-itinerary {
+  margin-top: 20px;
+  color: #000;
+  justify-content: flex-end;
+  transition: 0.2s all;
+  text-decoration: none;
+}
+
+.tab-content .expand-all-itinerary:hover {
+  color: var(--primary-color);
+}
+
+.itinerary .advanced-itinerary-row .accordion-tabs-toggle .itinerary-title span {
+  display: block;
+  position: relative;
+  font-weight: 500;
+  padding-right: 15px;
+  cursor: pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.itinerary .advanced-itinerary-row .accordion-tabs-toggle .itinerary-title span:hover {
+  color: var(--primary-color);
+}
+
+.tab-content .itinerary {
+  counter-reset: section;
+}
+
+.tab-content .wpte-itinerary-title {
+  font-weight: 600;
+}

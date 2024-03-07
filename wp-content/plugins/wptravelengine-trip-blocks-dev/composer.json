@@ -1,0 +1,14 @@
+{
+  "name": "wptravelengine/trip-blocks",
+  "autoload": {
+    "psr-4": {
+      "WPTravelEngineTripBlocks\\": "includes/"
+    }
+  },
+  "authors": [
+    {
+      "name": "WP Travel Engine"
+    }
+  ],
+  "require": {}
+}

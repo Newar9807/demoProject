@@ -9,7 +9,7 @@
     /* height: 100vh; */
 }
 
-.radioButtonTitle{
+.radioButtonTitle {
     font-weight: bold;
     font-size: 24;
 }
@@ -38,7 +38,9 @@ label {
     margin-right: 10px;
 }
 
-#name, #rating, #comment {
+#name,
+#rating,
+#comment {
     width: 100%;
     padding: 8px;
     margin-bottom: 16px;
@@ -68,4 +70,58 @@ button:hover {
     margin-top: 20px;
     color: #4caf50;
     text-align: center;
+}
+
+/* Style for the review list container */
+.review-list {
+    margin: 20px;
+}
+
+/* Style for each individual review */
+.review {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    padding: 15px;
+}
+
+/* Style for the reviewer name */
+.reviewer-name {
+    font-weight: bold;
+}
+
+/* Style for the review rating */
+.review-rating {
+    margin-top: 5px;
+    color: #f39c12;
+    /* You can change the color based on your rating scale */
+}
+
+/* Style for the review comment */
+.review-comment {
+    margin-top: 10px;
+    line-height: 1.5;
+}
+
+/* Style for the overall page layout */
+#primary {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Style for the page header */
+.page-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Style for the page title */
+.page-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Style for the overall page content */
+#main {
+    padding: 20px;
 }

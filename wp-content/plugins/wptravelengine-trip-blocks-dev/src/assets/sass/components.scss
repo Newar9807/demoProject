@@ -1,0 +1,44 @@
+@import "../../../src/@components/assets/styles.scss";
+.cw__spacing-group{
+    gap: 5px !important;
+    .cw__spacing-input-wrapper{
+        .label{
+            font-size: 10px;
+            text-transform: capitalize;
+            margin-top: 0;
+        }
+        .cw__spacing-input{
+            input{
+                padding: 5px;
+                min-height: 35px;
+                font-size: 14px;
+            }
+        }
+    }
+    .cw__spacing-button-wrapper{
+        height: 35px !important;
+        button{
+            padding: 5px !important;
+            min-height: 35px;
+            font-size: 12px !important;
+            min-width: unset !important;
+            svg{
+                width: 1em;
+            }
+        }
+        .cw__unit-picker-wrapper{
+            button{
+                padding: 5px 10px !important;
+            }
+        }
+    }
+}
+
+.cw__control-item{
+    > header{
+        > label{
+            font-size: 12px !important;
+            font-weight: 500 !important;
+        }
+    }
+}

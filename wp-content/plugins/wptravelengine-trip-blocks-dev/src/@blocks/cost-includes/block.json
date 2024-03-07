@@ -1,0 +1,84 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "wptravelenginetripblocks/cost-includes",
+	"version": "1.0.0",
+	"title": "Cost Includes",
+	"category": "widgets",
+	"attributes": {
+		"iconColor": {
+			"type": "string",
+			"label": "Icon Color",
+			"default": "#2183DF",
+			"selectors": ".include-result li:before",
+			"control": {
+				"type": "color",
+				"style": "color"
+			},
+			"panel": "-panel-"
+		},
+		"fontSize": {
+			"type": "string",
+			"label": "Font Size",
+			"panel": "-panel-",
+			"default": "",
+			"control": {
+				"type": "range",
+				"style": "font-size",
+				"controlAttribute": {
+					"units": [
+						{
+							"unit": "px",
+							"min": 1,
+							"max": 50
+						},
+						{
+							"unit": "em",
+							"min": 1,
+							"max": 8
+						},
+						{
+							"unit": "rem",
+							"min": 1,
+							"max": 8
+						}
+					]
+				}
+			}
+		},
+		"alignment": {
+			"type": "string",
+			"label": "Alignment",
+			"panel": "-panel-",
+			"control": {
+				"type": "alignment",
+				"style": "text-align"
+			},
+			"default": "left",
+			"selectors": "%WRAPPER% .include-result"
+		}
+	},
+	"supports": {
+		"align": false,
+		"wptravelenginetripblocks": {
+			"colors": {
+				"link": false,
+				"background": true,
+				"text": true
+			},
+			"box-shadow": false,
+			"spacing": {
+				"padding": true,
+				"margin": true
+			},
+			"panels": {
+				"-panel-": {
+					"title": "Cost Includes",
+					"icon": "admin-generic"
+				}
+			}
+		}
+	},
+	"textdomain": "wptravelenginetripblocks",
+	"render": "file:./block.php"
+}

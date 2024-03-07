@@ -1,0 +1,196 @@
+.trip {
+    &-rating {
+
+        // rating point
+        &-container {
+            text-align: center;
+            font-weight: 500;
+        }
+
+        // stars
+        &-stars {
+            display: inline-flex;
+            position: relative;
+            font-size: 20px;
+            line-height: 1;
+
+            svg {
+                vertical-align: top;
+                width: 1em;
+                height: 1em;
+
+                &:not(:last-of-type) {
+                    margin-right: var(--stars-gap);
+                }
+            }
+
+            &-container {
+                text-align: center;
+                --stars-gap: 4px;
+            }
+
+            &-placeholder-group,
+            &-rated-group {
+                white-space: nowrap;
+            }
+
+            &-placeholder-group {
+                color: #cccccc;
+            }
+
+            &-rated-group {
+                color: #EBAD34;
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                overflow: hidden;
+            }
+        }
+
+        // rating count
+        &-count {
+            color: #777777;
+
+            &-container {
+                text-align: center;
+            }
+
+            &-number {
+                font-weight: 500;
+                color: #000000;
+            }
+        }
+    }
+
+    // stars bar graph
+    &-stars {
+        &-bar {
+            display: flex;
+            align-items: center;
+            line-height: 1;
+            --progress-percent: 50%;
+
+            &-image {
+                color: var(--progress-color, #66DAB0);
+                padding-right: 12px;
+
+                svg,
+                img {
+                    vertical-align: top;
+                    width: 1em;
+                    height: 1em;
+                }
+            }
+
+            &-graph {
+                display: inline-flex;
+                flex-direction: column;
+                width: 100%;
+                vertical-align: top;
+                gap: var(--items-gap);
+
+                &-container {
+                    line-height: 1;
+                    --progress-bar-weight: 12px;
+                    --items-gap: 16px;
+                }
+            }
+
+            &-progress {
+                &-bar {
+                    height: var(--progress-bar-weight);
+                    flex: 1;
+                    background-color: #f1f1f1;
+                    border-radius: 50px;
+                    position: relative;
+                    overflow: hidden;
+
+                    &::before {
+                        content: "";
+                        width: var(--progress-percent, 0%);
+                        height: 100%;
+                        display: block;
+                        background-color: var(--progress-color, #66DAB0);
+                        border-radius: 50px;
+                    }
+                }
+
+                &-percent {
+                    flex-basis: 60px;
+                    padding-left: 0.75em;
+                }
+            }
+        }
+    }
+
+    &-block {
+
+        // reviewer
+        &-reviewer {
+
+            &-title,
+            &-location {
+                display: block;
+            }
+
+            &-title {
+                font-weight: 500;
+            }
+
+            //gallery
+            &-gallery {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 6px;
+            }
+
+            &-image {
+                flex-basis: 90px;
+                height: 56px;
+                max-width: 90px;
+                border-radius: 2px;
+                overflow: hidden;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    vertical-align: top;
+                }
+
+                a {
+                    width: 100%;
+                    height: 100%;
+                    display: block;
+                    position: relative;
+
+                    &::before {
+                        content: "";
+                        width: 100%;
+                        height: 100%;
+                        background-color: rgba(6, 22, 38, .8);
+                        background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15.0004 9.99942H12.0004V6.99942C12.0004 6.7342 11.895 6.47985 11.7075 6.29231C11.52 6.10477 11.2656 5.99942 11.0004 5.99942C10.7352 5.99942 10.4808 6.10477 10.2933 6.29231C10.1058 6.47985 10.0004 6.7342 10.0004 6.99942V9.99942H7.00039C6.73518 9.99942 6.48082 10.1048 6.29329 10.2923C6.10575 10.4798 6.00039 10.7342 6.00039 10.9994C6.00039 11.2646 6.10575 11.519 6.29329 11.7065C6.48082 11.8941 6.73518 11.9994 7.00039 11.9994H10.0004V14.9994C10.0004 15.2646 10.1058 15.519 10.2933 15.7065C10.4808 15.8941 10.7352 15.9994 11.0004 15.9994C11.2656 15.9994 11.52 15.8941 11.7075 15.7065C11.895 15.519 12.0004 15.2646 12.0004 14.9994V11.9994H15.0004C15.2656 11.9994 15.52 11.8941 15.7075 11.7065C15.895 11.519 16.0004 11.2646 16.0004 10.9994C16.0004 10.7342 15.895 10.4798 15.7075 10.2923C15.52 10.1048 15.2656 9.99942 15.0004 9.99942ZM21.7104 20.2894L18.0004 16.6094C19.4405 14.8138 20.1379 12.5347 19.9492 10.2407C19.7605 7.94672 18.7001 5.8122 16.9859 4.27606C15.2718 2.73992 13.0342 1.91893 10.7333 1.98189C8.43243 2.04485 6.24311 2.98698 4.61553 4.61456C2.98795 6.24214 2.04582 8.43145 1.98286 10.7323C1.9199 13.0332 2.7409 15.2708 4.27704 16.9849C5.81318 18.6991 7.94769 19.7595 10.2417 19.9482C12.5357 20.1369 14.8148 19.4395 16.6104 17.9994L20.2904 21.6794C20.3834 21.7731 20.494 21.8475 20.6158 21.8983C20.7377 21.9491 20.8684 21.9752 21.0004 21.9752C21.1324 21.9752 21.2631 21.9491 21.385 21.8983C21.5068 21.8475 21.6174 21.7731 21.7104 21.6794C21.8906 21.493 21.9914 21.2438 21.9914 20.9844C21.9914 20.7251 21.8906 20.4759 21.7104 20.2894ZM11.0004 17.9994C9.61592 17.9994 8.26255 17.5889 7.1114 16.8197C5.96026 16.0505 5.06305 14.9573 4.53324 13.6782C4.00342 12.3991 3.8648 10.9917 4.1349 9.63378C4.40499 8.27592 5.07168 7.02864 6.05065 6.04967C7.02961 5.0707 8.27689 4.40402 9.63476 4.13392C10.9926 3.86382 12.4001 4.00245 13.6792 4.53226C14.9583 5.06207 16.0515 5.95928 16.8207 7.11042C17.5899 8.26157 18.0004 9.61495 18.0004 10.9994C18.0004 12.8559 17.2629 14.6364 15.9501 15.9492C14.6374 17.2619 12.8569 17.9994 11.0004 17.9994Z' fill='white'/%3E%3C/svg%3E%0A");
+                        background-size: 24px 24px;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        visibility: hidden;
+                        opacity: 0;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        transition: all .3s ease;
+                    }
+
+                    &:hover {
+                        &::before {
+                            visibility: visible;
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

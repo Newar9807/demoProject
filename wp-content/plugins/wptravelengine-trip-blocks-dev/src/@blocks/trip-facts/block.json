@@ -1,0 +1,102 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "wptravelenginetripblocks/trip-facts",
+	"version": "1.0.0",
+	"title": "Trip Facts",
+	"description": "WP Travel Engine - Trip Facts Block",
+	"category": "widgets",
+	"example": {},
+	"attributes": {
+		"padding": {
+			"type": "object",
+			"selectors": "%WRAPPER% .secondary-trip-info"
+		},
+		"margin": {
+			"type": "object",
+			"selectors": "%WRAPPER% .secondary-trip-info"
+		},
+		"border": {
+			"type": "object",
+			"selectors": "%WRAPPER% .secondary-trip-info"
+		},
+		"background": {
+			"type": "string",
+			"selectors": "%WRAPPER% .secondary-trip-info",
+			"default": "#ffffff"
+		},
+		"borderRadius": {
+			"type": "object",
+			"selectors": "%WRAPPER% .secondary-trip-info"
+		},
+		"boxShadow": {
+			"type": "object",
+			"selectors": "%WRAPPER% .secondary-trip-info"
+		},
+		"factsColor": {
+			"type": "string",
+			"label": "Facts Color",
+			"default": "#0000008F",
+			"selectors": "%WRAPPER% .trip-facts-value li label",
+			"control": {
+				"type": "color",
+				"style": "color"
+			},
+			"panel": "-factscolor-"
+		},
+		"iconColor": {
+			"type": "string",
+			"label": "Icon Color",
+			"default": "#0056F6",
+			"selectors": "%WRAPPER% .trip-facts-value .icon-holder",
+			"control": {
+				"type": "color",
+				"style": "color"
+			},
+			"panel": "-factscolor-"
+		},
+		"showIcon": {
+			"type": "boolean",
+			"label": "Show Icon",
+			"default": true,
+			"control": {
+				"type": "switch"
+			},
+			"panel": "-tripfacts-"
+		},
+		"columns": {
+			"type": "number",
+			"label": "Columns",
+			"default": 3,
+			"control": {
+				"type": "input-number",
+				"min": "1",
+				"max": "4"
+			},
+			"panel": "-tripfacts-"
+		}
+	},
+	"supports": {
+		"align": false,
+		"wptravelenginetripblocks": {
+			"colors": {
+				"link": false
+			},
+			"border": true,
+			"spacing": {
+				"padding": true,
+				"margin": true
+			},
+			"panels": {
+				"-factscolor-": {
+					"title": "Color"
+				},
+				"-tripfacts-": {
+					"title": "Trip Facts"
+				}
+			}
+		}
+	},
+	"textdomain": "wptravelengine-trip-blocks",
+	"render": "file:./block.php"
+}

@@ -1,0 +1,90 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "wptravelenginetripblocks/reviews-count",
+	"version": "1.0.0",
+	"title": "Reviews Count",
+	"category": "widgets",
+	"description": "Reviews",
+	"attributes": {
+		"textColor": {
+			"type": "string",
+			"selectors": [
+				"%WRAPPER% .trip-rating-count",
+				"%WRAPPER% .trip-rating-count-number"
+			]
+		},
+		"alignment": {
+			"type": "string",
+			"label": "Alignment",
+			"panel": "-reviewcount-",
+			"default": "center",
+			"control": {
+				"type": "alignment",
+				"style": "text-align"
+			},
+			"selectors": "%WRAPPER% .trip-rating-count-container"
+		},
+		"fontSize": {
+			"type": "string",
+			"label": "Font Size",
+			"panel": "-reviewcount-",
+			"default": "18px",
+			"control": {
+				"type": "range",
+				"style": "font-size",
+				"controlAttribute": {
+					"units": [
+						{
+							"unit": "px",
+							"min": 1,
+							"max": 100
+						},
+						{
+							"unit": "em",
+							"min": 1,
+							"max": 10
+						},
+						{
+							"unit": "rem",
+							"min": 1,
+							"max": 10
+						}
+					]
+				}
+			},
+			"selectors": "%WRAPPER% .trip-rating-count-container"
+		},
+		"ratingCount": {
+			"type": "string",
+			"label": "Rating Count",
+			"default": "Based on %rating_count% travel reviews",
+			"control": {
+				"type": "text"
+			},
+			"panel": "-display-"
+		}
+	},
+	"supports": {
+		"align": false,
+		"wptravelenginetripblocks": {
+			"colors": {
+				"background": true,
+				"text": true,
+				"link": false
+			},
+			"panels": {
+				"-reviewcount-": {
+					"title": "Review Count",
+					"icon": "admin-site-alt2"
+				},
+				"-display-": {
+					"title": "Display",
+					"icon": "admin-site-alt2"
+				}
+			}
+		}
+	},
+	"textdomain": "wptravelengine-trip-blocks",
+    "render": "file:./block.php"
+}

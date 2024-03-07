@@ -1,0 +1,156 @@
+//**==== form fields ====**//
+.wte_enquiry_contact_form-wrap,
+.rating-form,
+.wpte-bf-checkout-form {
+    *{
+        box-sizing: border-box;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="url"],
+    input[type="password"],
+    input[type="search"],
+    input[type="number"],
+    input[type="tel"],
+    input[type="range"],
+    input[type="date"],
+    input[type="month"],
+    input[type="week"],
+    input[type="time"],
+    input[type="datetime"],
+    input[type="datetime-local"],
+    input[type="color"],
+    textarea,
+    select {
+        padding: 12px;
+        line-height: 1.7;
+        border: 1px solid rgba(#061626, .2);
+        border-radius: 4px;
+        font-family: inherit;
+        vertical-align: top;
+    }
+
+    textarea {
+        min-height: 166px;
+    }
+}
+
+//**==== Enquiry From ====**//
+.wte_enquiry_contact_form {
+    background-color: #ffffff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+    border-radius: 4px;
+    padding: 40px 32px;
+    padding-left: 24px;
+    padding-right: 24px;
+    display: flex;
+    flex-wrap: wrap;
+
+    .row-repeater {
+        margin: 0 0 32px;
+        width: 100% !important;
+
+        &:last-child {
+            margin: 0;
+        }
+
+        &.country-holder,
+        &.contact,
+        &.adult,
+        &.children {
+            @media(min-width: 768px) {
+                width: 50% !important;
+            }
+        }
+
+        &.country-holder,
+        &.adult {
+            @media(min-width: 768px) {
+                padding-right: 16px;
+            }
+        }
+
+        &.contact,
+        &.children {
+            @media(min-width: 768px) {
+                padding-left: 16px;
+            }
+        }
+
+        label {
+            font-weight: normal;
+            display: block;
+            margin: 0 0 8px;
+        }
+    }
+
+    .enquiry-form-title {
+        font-weight: 500;
+        color: rgba(#061626, .8);
+        margin: 0 0 24px;
+    }
+
+    .package-name-holder {
+        color: rgba(#061626, .7);
+        margin: 0 0 48px;
+
+        label {
+            display: inline-block;
+        }
+
+        .wp-travel-engine-info {
+            font-weight: 500;
+            color: rgba(#061626, .8);
+        }
+    }
+
+    .confirm-holder {
+        width: 100%;
+    }
+
+    input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]),
+    textarea,
+    select {
+        width: 100%;
+    }
+}
+
+.wp-block-wptravelenginetripblocks-trip-enquiry input.enquiry-submit {
+    padding: 14px 32px;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+    &.small{
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+    &.large{
+        padding: 16px 32px;
+        font-size: 18px;
+    }
+
+    &:hover {
+        border-color: var(--primary-color);
+    }
+}
+
+.wp-block-wptravelenginetripblocks-trip-enquiry input.enquiry-submit.center {
+    display: flex;
+    margin: 0 auto;
+}
+
+.wp-block-wptravelenginetripblocks-trip-enquiry input.enquiry-submit.right {
+    display: flex;
+    margin-left: auto;
+}
+
+.wp-block-wptravelenginetripblocks-trip-enquiry .wte_enquiry_contact_form-wrap .wte_enquiry_contact_form .row-repeater label, .wte_enquiry_contact_form .package-name-holder .wp-travel-engine-info {
+  display: none;
+}
+
+.wp-block-wptravelenginetripblocks-trip-enquiry .wte_enquiry_contact_form-wrap.form-label-enabled .wte_enquiry_contact_form .row-repeater label, .wte_enquiry_contact_form .package-name-holder .wp-travel-engine-info {
+  display: block;
+}

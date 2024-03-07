@@ -1,0 +1,171 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "wptravelenginetripblocks/trip-pricing",
+  "version": "1.0.0",
+  "title": "Trip Pricing",
+  "description": "Prompt visitors to add trip pricing info.",
+  "category": "widgets",
+  "attributes": {
+    "regularPriceFontSize": {
+      "type": "string",
+      "label": "Regular Price Font Size",
+      "panel": "-prices-",
+      "default": "14px",
+      "selectors": "%WRAPPER% .wpte-bf-price .wpte-bf-reg-price del",
+      "control": {
+        "type": "range",
+        "style": "font-size",
+        "controlAttribute": {
+          "units": [
+            {
+              "unit": "px",
+              "min": 0,
+              "max": 50
+            }
+          ]
+        }
+      }
+    },
+    "priceFontSize": {
+      "type": "string",
+      "label": "Sale Price Font Size",
+      "panel": "-prices-",
+      "default": "24px",
+      "selectors": "%WRAPPER% .wpte-bf-offer-price .wpte-bf-offer-amount",
+      "control": {
+        "type": "range",
+        "style": "font-size",
+        "controlAttribute": {
+          "units": [
+            {
+              "unit": "px",
+              "min": 0,
+              "max": 50
+            }
+          ]
+        }
+      }
+    },
+    "price": {
+      "type": "object",
+      "label": "Price",
+      "default": {
+        "regular": "rgba(0,0,0,0.4)",
+        "sale": "#061626"
+      },
+      "control": {
+        "type": "color",
+        "labels": {
+          "regular": {
+            "label": "Regular Price",
+            "style": "color",
+            "selectors": "%WRAPPER% .wpte-bf-price-wrap .wpte-bf-price del"
+          },
+          "sale": {
+            "label": "Sale Price",
+            "style": "color",
+            "selectors": "%WRAPPER% .wpte-bf-price-wrap .wpte-bf-price ins"
+          }
+        }
+      }
+    },
+    "prefixTextColor": {
+      "type": "string",
+      "label": "Prefix Text Color",
+      "default": "#000000",
+      "selectors": "%WRAPPER% .wpte-bf-price .wpte-bf-reg-price",
+      "control": {
+        "type": "color",
+        "style": "color"
+      }
+    },
+    "suffixTextColor": {
+      "type": "string",
+      "label": "Suffix Text Color",
+      "default": "#00000066",
+      "selectors": "%WRAPPER% .wpte-bf-price .wpte-bf-offer-price:not(.wpte-bf-offer-amount)",
+      "control": {
+        "type": "color",
+        "style": "color"
+      }
+    },
+    "background": {
+      "type": "string",
+      "default": "#ffffff"
+    },
+    "displayFormat": {
+      "type": "string",
+      "label": "Amount Display Format",
+      "default": "%CURRENCY_SYMBOL%%FORMATED_AMOUNT%",
+      "control": {
+        "type": "textarea",
+        "help": "Amount Display format. Available tags: %CURRENCY_CODE%, %CURRENCY_SYMBOL%, %AMOUNT%, %FORMATED_AMOUNT%"
+      },
+      "panel": "-display-"
+    },
+    "pricePrefix": {
+      "type": "string",
+      "label": "Prefix for Price",
+      "default": "From %regular_price%",
+      "control": {
+        "type": "text"
+      },
+      "panel": "-display-"
+    },
+    "priceDisplayFormat": {
+      "type": "string",
+      "label": "Price Per Format",
+      "default": "%sale_price%/ %price_category%",
+      "control": {
+        "type": "text"
+      },
+      "panel": "-display-"
+    },
+    "padding": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "selectors": "%WRAPPER%"
+    },
+    "margin": {
+      "type": "object",
+      "default": {
+        "top": "24px",
+        "right": "",
+        "bottom": "24px",
+        "left": ""
+      },
+      "selectors": "%WRAPPER%"
+    },
+    "packageCategories": {
+      "type": "array"
+    },
+    "priceCategory": {
+      "type": "array"
+    }
+  },
+  "supports": {
+    "align": false,
+    "wptravelenginetripblocks": {
+      "colors": {
+        "textColor": false,
+        "link": false
+      },
+      "border": false,
+      "panels": {
+        "-prices-": {
+          "title": "Prices"
+        },
+        "-display-": {
+          "title": "Display"
+        }
+      }
+    }
+  },
+  "textdomain": "wptravelengine-trip-blocks"
+}

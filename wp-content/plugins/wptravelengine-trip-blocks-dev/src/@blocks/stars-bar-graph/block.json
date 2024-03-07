@@ -1,0 +1,11 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "wptravelenginetripblocks/stars-bar-graph",
+	"version": "1.0.0",
+	"title": "Stars Bar Graph",
+	"category": "widgets",
+	"description": "Stars bar graph",
+	"textdomain": "wptravelengine-trip-blocks",
+    "render": "file:./block.php"
+}

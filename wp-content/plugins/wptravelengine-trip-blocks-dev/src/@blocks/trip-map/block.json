@@ -1,0 +1,52 @@
+{
+	"apiVersion": 3,
+	"name": "wptravelenginetripblocks/trip-map",
+	"title": "Trip Map",
+	"category": "widgets",
+	"version": "1.0.0",
+	"attributes": {
+		"map": {
+			"type": "string",
+			"default": "Both",
+			"control": {
+				"type": "select-button",
+				"controlAttribute": {
+					"type": "radio",
+					"options": [
+						{
+							"label": "Image",
+							"value": "Image"
+						},
+						{
+							"label": "Iframe",
+							"value": "Iframe"
+						},
+						{
+							"label": "Both",
+							"value": "Both"
+						}
+					]
+				}
+			},
+			"panel": "-map-"
+		}
+	
+	},
+	"supports": {
+		"align": false,
+		"wptravelenginetripblocks": {
+			"colors": {
+				"background": true,
+				"textColor": false,
+				"link": false
+			},
+			"panels": {
+				"-map-": {
+					"title": "Map Display"
+				}
+			}
+		}
+	},
+	"textdomain": "wptravelengine-trip-blocks",
+	"render": "file:./block.php"
+}

@@ -1,0 +1,42 @@
+.overview {
+    .wpte-overview-title {
+        margin: 0 0 24px !important;
+    }
+}
+
+.wpte-trip-highlights, .wptravelengine_css_v2 .wpte-trip-highlights {
+    margin-left: 0;
+    padding-left: 0;
+    list-style: none;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    li {
+        line-height: 1.5;
+        position: relative;
+        padding-left: calc(1em + 8px);
+        margin: 0 0 8px;
+
+        &:last-child {
+            margin: 0;
+        }
+
+        &::before {
+            content: "";
+            width: 1em;
+            height: 1em;
+            background-color: var(--primary-color);
+            mask: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M12 23C18.0751 23 23 18.0751 23 12C23 5.92487 18.0751 1 12 1C5.92487 1 1 5.92487 1 12C1 18.0751 5.92487 23 12 23ZM16.7372 9.67572C17.1104 9.2686 17.0828 8.63604 16.6757 8.26284C16.2686 7.88965 15.636 7.91715 15.2629 8.32427L10.5 13.5201L8.73716 11.597C8.36397 11.1899 7.7314 11.1624 7.32428 11.5356C6.91716 11.9088 6.88966 12.5413 7.26285 12.9485L9.76285 15.6757C9.95226 15.8824 10.2197 16 10.5 16C10.7803 16 11.0478 15.8824 11.2372 15.6757L16.7372 9.67572Z' fill='black'/%3E%3C/svg%3E%0A");
+            mask-repeat: no-repeat;
+            mask-size: 1em 1em;
+            mask-position: center;
+            position: static;
+            display: inline-block;
+            vertical-align: -0.18em;
+            margin-left: calc(-1 * (1em + 8px));
+            margin-right: 8px;
+        }
+    }
+}

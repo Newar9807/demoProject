@@ -1,0 +1,119 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "wptravelenginetripblocks/faqs",
+  "version": "1.0.0",
+  "title": "Trip FAQs",
+  "category": "widgets",
+  "attributes": {
+    "titleColor": {
+      "type": "string",
+      "label": "Title",
+      "default": "#000000",
+      "control": {
+        "type": "color",
+        "style": "color"
+      },
+      "selectors": "%WRAPPER% .faq-title",
+      "panel": "-color-"
+    },
+    "iconColor": {
+      "type": "string",
+      "label": "Icon",
+      "default": "#147DFE",
+      "control": {
+        "type": "color"
+      },
+      "variableName": "primary-color",
+      "selectors": "%WRAPPER% .faq-row .rotator",
+      "panel": "-color-"
+    },
+    "dividerColor": {
+      "type": "object",
+      "label": "Items Separator",
+      "default": {
+        "initial": "#040F1A1A"
+      },
+      "selectors": "%WRAPPER% .faq-row",
+      "control": {
+        "type": "color",
+        "labels": {
+          "initial": {
+            "label": "Divider",
+            "style": "border-color"
+          }
+        }
+      },
+      "panel": "-color-"
+    },
+    "titleSize": {
+      "type": "string",
+      "label": "Font Size",
+      "panel": "-title-",
+      "default": "18px",
+      "control": {
+        "type": "range",
+        "style": "font-size",
+        "controlAttribute": {
+          "units": [
+            {
+              "unit": "px",
+              "min": 1,
+              "max": 100
+            },
+            {
+              "unit": "em",
+              "min": 1,
+              "max": 10
+            },
+            {
+              "unit": "rem",
+              "min": 1,
+              "max": 10
+            }
+          ]
+        }
+      },
+      "selectors": "%WRAPPER% .faq-title"
+    },
+    "itemSpacing": {
+      "type": "string",
+      "label": "Items Spacing",
+      "panel": "-title-",
+      "default": "48px",
+      "control": {
+        "type": "range",
+        "style": "margin-bottom",
+        "controlAttribute": {
+          "units": [
+            {
+              "unit": "px",
+              "min": 0,
+              "max": 100
+            }
+          ]
+        }
+      },
+      "selectors": "%WRAPPER% .faq-row"
+    }
+  },
+  "supports": {
+    "wptravelenginetripblocks": {
+      "colors": {
+        "link": false,
+        "background": true,
+        "text": true
+      },
+      "panels": {
+        "-color-": {
+          "title": "Color",
+          "icon": "color"
+        },
+        "-title-": {
+          "title": "Title",
+          "icon": "title"
+        }
+      }
+    }
+  }
+}

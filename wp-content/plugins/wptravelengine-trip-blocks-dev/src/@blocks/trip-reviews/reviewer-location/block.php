@@ -1,0 +1,1 @@
+<span class="trip-block-reviewer-location">from Nepal</span>

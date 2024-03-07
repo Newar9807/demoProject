@@ -1,0 +1,70 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "wptravelenginetripblocks/trip-ratings",
+	"version": "1.0.0",
+	"title": "Trip Ratings",
+	"category": "widgets",
+	"description": "Trip Ratings",
+	"attributes": {
+		"alignment": {
+			"type": "string",
+			"label": "Alignment",
+			"panel": "-ratings-",
+			"control": {
+				"type": "alignment",
+				"style": "text-align"
+			},
+			"default": "center",
+			"selectors": "%WRAPPER% .trip-rating-container"
+		},
+		"fontSize": {
+			"type": "string",
+			"label": "Font Size",
+			"panel": "-ratings-",
+			"default": "18px",
+			"control": {
+				"type": "range",
+				"style": "font-size",
+				"controlAttribute": {
+					"units": [
+						{
+							"unit": "px",
+							"min": 1,
+							"max": 100
+						},
+						{
+							"unit": "em",
+							"min": 1,
+							"max": 10
+						},
+						{
+							"unit": "rem",
+							"min": 1,
+							"max": 10
+						}
+					]
+				}
+			},
+			"selectors": "%WRAPPER% .trip-rating-container"
+		}
+	},
+	"supports": {
+		"align": false,
+		"wptravelenginetripblocks": {
+			"colors": {
+				"background": true,
+				"text": true,
+				"link": false
+			},
+			"panels": {
+				"-ratings-": {
+					"title": "Ratings",
+					"icon": "star-filled"
+				}
+			}
+		}
+	},
+	"textdomain": "wptravelengine-trip-blocks",
+    "render": "file:./block.php"
+}

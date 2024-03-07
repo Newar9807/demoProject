@@ -1,0 +1,90 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "wptravelenginetripblocks/cost-excludes",
+  "version": "1.0.0",
+  "title": "Cost Excludes",
+  "category": "widgets",
+  "attributes": {
+    "iconColor": {
+      "type": "string",
+      "label": "Icon Color",
+      "default": "#E31E18",
+      "selectors": ".exclude-result li:before",
+      "control": {
+        "type": "color",
+        "style": "color"
+      },
+      "panel": "-costexcludes-"
+    },
+    "fontSize": {
+      "type": "string",
+      "label": "Font Size",
+      "panel": "-costexcludes-",
+      "default": "16px",
+      "control": {
+        "type": "range",
+        "style": "font-size",
+        "controlAttribute": {
+          "units": [
+            {
+              "unit": "px",
+              "min": 1,
+              "max": 50
+            },
+            {
+              "unit": "em",
+              "min": 1,
+              "max": 8
+            },
+            {
+              "unit": "rem",
+              "min": 1,
+              "max": 8
+            }
+          ]
+        }
+      }
+    },
+    "alignment": {
+      "type": "string",
+      "label": "Alignment",
+      "panel": "-costexcludes-",
+      "control": {
+        "type": "alignment",
+        "style": "text-align",
+        "labels": {
+          "alignment": {
+            "label": "Alignment",
+            "style": "text-align"
+          }
+        }
+      },
+      "default": "left",
+      "selectors": "%WRAPPER% .exclude-result"
+    }
+  },
+  "supports": {
+    "align": false,
+    "wptravelenginetripblocks": {
+      "colors": {
+        "link": false,
+        "background": true,
+        "text": true
+      },
+      "box-shadow": false,
+      "spacing": {
+        "padding": true,
+        "margin": true
+      },
+      "panels": {
+        "-costexcludes-": {
+          "title": "Cost Excludes",
+          "icon": "admin-generic"
+        }
+      }
+    }
+  },
+  "textdomain": "wptravelenginetripblocks",
+  "render": "file:./block.php"
+}

@@ -1,0 +1,87 @@
+.faq {
+    .wp-travel-engine-faq-tab-header {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 0 56px;
+
+        .wpte-faqs-title {
+            margin: 0 !important;
+        }
+    }
+}
+
+.faq-row {
+    border-bottom: 1px solid rgba(#040F1A, .1);
+    padding: 0;
+    padding-bottom: calc(var(--item-spacing, 48px) / 2);
+    margin-bottom: calc(var(--item-spacing, 48px) / 2) !important;
+    &:first-child{
+        padding-top: 0;
+        border-top: none !important;
+    }
+    &:last-child{
+        padding-bottom: 0;
+        margin-bottom: 0 !important;
+        border-bottom: none;
+    }
+
+    .accordion-tabs-toggle {
+        text-decoration: none;
+        color: rgba(#061626, .8);
+        font-size: 18px;
+        font-weight: 500;
+        position: relative;
+        padding-right: 24px;
+        display: block;
+        border: none;
+
+        .rotator {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 2px solid var(--primary-color);
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+
+            &::before,
+            &::after {
+                content: "";
+                width: 2px !important;
+                height: 8px !important;
+                border-radius: 2px;
+                background-color: var(--primary-color);
+                position: absolute;
+                top: 50% !important;
+                left: 50% !important;
+                transform: translate(-50%, -50%) !important;
+                transition: all .3s ease;
+            }
+
+            &::after {
+                transform: translate(-50%, -50%) rotate(90deg) !important;
+            }
+        }
+
+        &.active {
+
+            .rotator {
+                &::before {
+                    transform: translate(-50%, -50%) rotate(90deg) !important;
+                    opacity: 0;
+                }
+            }
+        }
+    }
+
+    .faq-content {
+        padding-top: 16px;
+
+        p {
+            margin: 0;
+        }
+    }
+}

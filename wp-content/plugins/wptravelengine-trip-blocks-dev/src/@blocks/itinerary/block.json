@@ -1,0 +1,175 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "wptravelenginetripblocks/itinerary",
+  "version": "1.0.0",
+  "title": "Trip Itinerary",
+  "category": "widgets",
+  "supports": {
+    "wptravelenginetripblocks": {
+      "colors": {
+        "link": false
+      },
+      "border": true,
+      "spacing": {
+        "margin": true,
+        "padding": true
+      },
+      "panels": {
+        "-color-": {
+          "title": "Color",
+          "icon": "color"
+        },
+        "-title-": {
+          "title": "Title",
+          "icon": "title"
+        },
+        "-itinerary-": {
+          "title": "Itinerary",
+          "icon": "itinerary"
+        }
+      }
+    }
+  },
+  "attributes": {
+    "showAll": {
+      "type": "boolean",
+      "label": "Always Show All Itinerary",
+      "panel": "-title-",
+      "default": false,
+      "control": {
+        "type": "switch"
+      }
+    },
+    "textColor": {
+      "type": "string",
+      "default": "#000000",
+      "selectors": [
+        "%WRAPPER% .itinerary",
+        "%WRAPPER% .itinerary .itinerary-content .itinerary-detail-additional-info span"
+      ]
+    },
+    "titleColor": {
+      "type": "object",
+      "label": "Title",
+      "default": {
+        "initial": "#111111",
+        "day": "#777777"
+      },
+      "control": {
+        "type": "color",
+        "labels": {
+          "initial": {
+            "label": "Title",
+            "style": "color",
+            "selectors": ["%WRAPPER% .itinerary .wte-itinerary-head-wrap .itinerary-title"]
+          },
+          "day": {
+            "label": "Day",
+            "style": "color",
+            "selectors": ["%WRAPPER% .itinerary .wte-itinerary-head-wrap .title"]
+          }
+        }
+      },
+      "panel": "-color-"
+    },
+    "iconColor": {
+      "type": "object",
+      "label": "Icon",
+      "default": {
+        "initial": "#147DFE"
+      },
+      "selectors": "%WRAPPER% .itinerary .itinerary-row",
+      "control": {
+        "type": "color",
+        "labels": {
+          "initial": {
+            "label": "Icon",
+            "style": "--primary-color"
+          }
+        }
+      },
+      "panel": "-color-"
+    },
+    "dividerColor": {
+      "type": "object",
+      "label": "Items Separator",
+      "default": {
+        "initial": "#040F1A1A"
+      },
+      "selectors": "%WRAPPER% .itinerary .itinerary-row",
+      "control": {
+        "type": "color",
+        "labels": {
+          "initial": {
+            "label": "Divider",
+            "style": "border-color"
+          }
+        }
+      },
+      "panel": "-color-"
+    },
+    "dayLabel": {
+      "type": "boolean",
+      "label": "Show Day Label",
+      "panel": "-title-",
+      "default": true,
+      "control": {
+        "type": "switch"
+      }
+    },
+    "titleSize": {
+      "type": "string",
+      "label": "Font Size",
+      "panel": "-title-",
+      "default": "18px",
+      "selectors": [
+        ".itinerary .wte-itinerary-head-wrap .title",
+        ".itinerary .wte-itinerary-head-wrap .itinerary-title"
+      ],
+      "control": {
+        "type": "range",
+        "style": "font-size",
+        "controlAttribute": {
+          "units": [
+            {
+              "unit": "px",
+              "min": 1,
+              "max": 100
+            },
+            {
+              "unit": "em",
+              "min": 1,
+              "max": 10
+            },
+            {
+              "unit": "rem",
+              "min": 1,
+              "max": 10
+            }
+          ]
+        }
+      }
+    },
+    "itemSpacing": {
+      "type": "string",
+      "label": "Items Spacing",
+      "panel": "-title-",
+      "default": "48px",
+      "selectors": "%WRAPPER% .itinerary .itinerary-row",
+      "control": {
+        "type": "range",
+        "style": "margin-bottom",
+        "controlAttribute": {
+          "units": [
+            {
+              "unit": "px",
+              "min": 1,
+              "max": 100
+            }
+          ]
+        }
+      }
+    }
+  }
+}

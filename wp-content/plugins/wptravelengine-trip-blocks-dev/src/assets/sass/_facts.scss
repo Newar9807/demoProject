@@ -1,0 +1,139 @@
+@use "sass:math";
+
+//**==== trip facts ====**//
+.secondary-trip-info {
+    background-color: #ffffff;
+    border-radius: 4px;
+    padding: 40px 32px;
+
+    .wte-trip-facts {
+        all: unset;
+
+        .widget-title {
+            margin-top: 0;
+            // display: none;
+        }
+
+        .trip-facts-taxonomy {
+            .value {
+                a {
+                    position: relative;
+                    margin-right: 10px;
+                    text-decoration: none;
+                    color: inherit;
+                    display: inline-block;
+
+                    &:hover {
+                        text-decoration: underline;
+                        color: var(--primary-color);
+                    }
+
+                    &:after {
+                        content: ','
+                    }
+
+                    &:last-child {
+                        margin-right: 0;
+
+                        &:after {
+                            content: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .trip-facts-value {
+        margin: -16px;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        li {
+            padding: 16px;
+            margin: 0;
+            flex-wrap: wrap;
+            align-self: flex-start;
+
+            svg {
+                width: 1em;
+                height: 1em;
+                font-size: inherit;
+                margin-right: 6px;
+            }
+
+            label {
+                font-size: 14px;
+                line-height: 1.5;
+                color: #06162666;
+                font-weight: normal;
+            }
+
+            [class*="trip-facts-"] {
+                line-height: 1.5;
+                width: 100%;
+                flex: auto;
+                margin-top: 6px;
+
+                .value {
+                    font-size: 15px;
+                }
+            }
+        }
+
+        .icon-holder {
+            font-size: 15px;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            height: 1.5em;
+        }
+    }
+
+    /*==============================
+     Trips fact style
+     ===============================*/
+
+    .trip-facts-value li {
+        display: flex;
+        flex-direction: row;
+        flex-basis: 0;
+        flex-grow: 1;
+        max-width: 100%;
+        min-width: 230px;
+    }
+
+    .trip-facts-value li:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+
+    .trip-facts-value li svg {
+        align-items: flex-start;
+        margin-right: 15px;
+        max-width: 30px;
+    }
+
+    .wte-trip-facts {
+        * {
+            box-sizing: border-box;
+        }
+
+        @for $i from 1 through 4 {
+            $width: math.div(100%, $i);
+
+            &.wte-columns-#{$i} {
+                .trip-facts-value {
+                    li {
+                        flex-grow: unset;
+                        min-width: $width;
+                    }
+                }
+            }
+        }
+    }
+}

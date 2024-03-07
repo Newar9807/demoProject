@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "wptravelenginetripblocks/trip-description",
+  "version": "1.0.0",
+  "title": "Trip Description",
+  "category": "widgets",
+  "textdomain": "wptravelengine-trip-blocks",
+  "attributes": {
+    "fontSize": {
+      "type": "string",
+      "label": "Font Size",
+      "panel": "-description-",
+      "default": "16px",
+      "control": {
+        "type": "range",
+        "style": "font-size",
+        "controlAttribute": {
+          "units": [
+            {"unit": "px", "min": 1, "max": 100},
+            {"unit": "em", "min": 1, "max": 10},
+            {"unit": "rem", "min": 1, "max": 10}
+          ]
+        }
+      }
+    },
+    "alignment": {
+      "type": "string",
+      "label": "Alignment",
+      "panel": "-description-",
+      "default": "left",
+      "control": {
+        "type": "alignment",
+        "style": "text-align"
+      }
+    }
+  },
+  "supports": {
+    "align": false,
+    "wptravelenginetripblocks": {
+      "panels": {
+        "-description-": {
+          "title": "Description",
+          "icon": "calendar"
+        }
+      }
+    }
+  },
+  "render": "file:./block.php"
+}

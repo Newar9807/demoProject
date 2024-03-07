@@ -1,0 +1,271 @@
+ //**==== Fixed Departure Dates ====**//
+ #wte-fixed-departure-dates {
+    margin-top: 32px;
+}
+
+.wte-fsd-list-container {
+    .wte-fsd-list-header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0 0 24px;
+
+        h2 {
+            margin: 0 !important;
+        }
+
+        .wte-user-input {
+            margin: 0;
+
+            .select2-container {
+                width: auto !important;
+
+                .select2-selection--single {
+                    height: 40px;
+                    border-radius: 4px;
+                    border: 1px solid rgba(#061626, .2);
+                    padding-right: 16px;
+
+                    &::after {
+                        content: none !important;
+                    }
+
+                    .select2-selection__rendered {
+                        display: flex;
+                        align-items: center;
+                        height: 100%;
+                        padding: 0 24px 0 16px !important;
+                        margin: 0 !important;
+                    }
+
+                    .select2-selection__arrow {
+                        all: unset;
+                        display: inline-block;
+                        width: 1em;
+                        height: 1em;
+                        background-color: currentColor;
+                        mask: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 4L6 8L2 4' stroke='%23061626' stroke-opacity='0.8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+                        mask-repeat: no-repeat;
+                        mask-position: center;
+                        mask-size: 100% 100%;
+                        position: absolute;
+                        top: 50% !important;
+                        right: 16px;
+                        transform: translateY(-50%);
+
+                        b {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.wpte-tabs-container {
+    .wte-fsd-frontend-holder-dd {
+        margin: 0 -24px;
+    }
+}
+
+.wte-fsd-frontend-holder-dd {
+
+    .loadMore,
+    .showLess {
+        padding: 14px 32px;
+        font-size: 16px;
+        line-height: 1.25;
+        font-weight: 500;
+        color: var(--primary-color);
+        background: none;
+        border: 1px solid var(--primary-color);
+        border-radius: 4px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+    }
+}
+
+#nestable1 {
+    .dd-list {
+        text-align: center;
+
+        table {
+            border-collapse: collapse;
+            border: none;
+            width: 100%;
+
+            tr {
+
+                td,
+                th {
+                    padding: 30px 16px;
+                    font-size: 15px;
+                    color: rgba(#061626, .7);
+                }
+
+                th {
+                    border-bottom: 2px solid rgba(#061626, .15);
+                    background: none;
+                    font-size: 16px;
+                    text-transform: capitalize;
+                    font-weight: 500;
+                    color: rgba(#061626, .8);
+                }
+
+                .svg-inline--fa,
+                .fa {
+                    margin-right: 5px;
+                    color: var(--primary-color);
+                    fill: currentColor;
+                }
+
+                .book-btn {
+                    background-color: var(--primary-color);
+                    border-color: var(--primary-color);
+                    color: #fff;
+                    cursor: pointer;
+                    font-size: 16px;
+                    line-height: 1.25;
+                    padding: 8px 12px;
+                    width: 100%;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                    display: inline-block;
+                    font-size: 14px;
+                    line-height: 17px;
+                    padding: 6px 12px;
+                    text-align: center;
+                    -webkit-transition: linear 0.2s;
+                    -moz-transition: linear 0.2s;
+                    transition: linear 0.2s;
+                }
+            }
+
+            tbody {
+                tr {
+                    border-bottom: 1px solid rgba(#061626, .05);
+                }
+            }
+        }
+    }
+}
+
+.select2-container--open .select2-dropdown--below {
+    top: 29px;
+}
+
+//**==== FSD shortcode ====**//
+.fixed-starting.dates,
+#wte-trips-fixed-departure-dates .fixed-starting.dates {
+    .wpte-trips-fsd-table-wrapper {
+        table {
+            thead {
+                th {
+                    border-bottom: 2px solid rgba(#061626, .15);
+                }
+            }
+
+            th {
+                text-align: left;
+            }
+
+            td,
+            th {
+                padding: 24px !important;
+                text-align: left;
+            }
+
+            td {
+                border-bottom: 1px solid rgba(#061626, .05);
+
+                .wte-start-end-wrap,
+                .seats-available,
+                .trip-cost-holder {
+                    padding-left: 1.5em;
+                    line-height: 1.5;
+                    position: relative;
+
+                    &::before {
+                        content: "";
+                        width: 1em;
+                        height: 1.5em;
+                        background-color: var(--primary-color);
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                    }
+                }
+
+                .wte-start-end-wrap {
+                    &::before {
+                        mask: url("data:image/svg+xml,%3Csvg width='16' height='17' viewBox='0 0 16 17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.6663 3.16732H11.333V2.50065C11.333 2.32384 11.2628 2.15427 11.1377 2.02925C11.0127 1.90422 10.8432 1.83398 10.6663 1.83398C10.4895 1.83398 10.32 1.90422 10.1949 2.02925C10.0699 2.15427 9.99967 2.32384 9.99967 2.50065V3.16732H5.99967V2.50065C5.99967 2.32384 5.92944 2.15427 5.80441 2.02925C5.67939 1.90422 5.50982 1.83398 5.33301 1.83398C5.1562 1.83398 4.98663 1.90422 4.8616 2.02925C4.73658 2.15427 4.66634 2.32384 4.66634 2.50065V3.16732H3.33301C2.80257 3.16732 2.29387 3.37803 1.91879 3.7531C1.54372 4.12818 1.33301 4.63688 1.33301 5.16732V13.1673C1.33301 13.6978 1.54372 14.2065 1.91879 14.5815C2.29387 14.9566 2.80257 15.1673 3.33301 15.1673H12.6663C13.1968 15.1673 13.7055 14.9566 14.0806 14.5815C14.4556 14.2065 14.6663 13.6978 14.6663 13.1673V5.16732C14.6663 4.63688 14.4556 4.12818 14.0806 3.7531C13.7055 3.37803 13.1968 3.16732 12.6663 3.16732ZM13.333 13.1673C13.333 13.3441 13.2628 13.5137 13.1377 13.6387C13.0127 13.7637 12.8432 13.834 12.6663 13.834H3.33301C3.1562 13.834 2.98663 13.7637 2.8616 13.6387C2.73658 13.5137 2.66634 13.3441 2.66634 13.1673V8.50065H13.333V13.1673ZM13.333 7.16732H2.66634V5.16732C2.66634 4.99051 2.73658 4.82094 2.8616 4.69591C2.98663 4.57089 3.1562 4.50065 3.33301 4.50065H4.66634V5.16732C4.66634 5.34413 4.73658 5.5137 4.8616 5.63872C4.98663 5.76375 5.1562 5.83398 5.33301 5.83398C5.50982 5.83398 5.67939 5.76375 5.80441 5.63872C5.92944 5.5137 5.99967 5.34413 5.99967 5.16732V4.50065H9.99967V5.16732C9.99967 5.34413 10.0699 5.5137 10.1949 5.63872C10.32 5.76375 10.4895 5.83398 10.6663 5.83398C10.8432 5.83398 11.0127 5.76375 11.1377 5.63872C11.2628 5.5137 11.333 5.34413 11.333 5.16732V4.50065H12.6663C12.8432 4.50065 13.0127 4.57089 13.1377 4.69591C13.2628 4.82094 13.333 4.99051 13.333 5.16732V7.16732Z' fill='%232183DF'/%3E%3C/svg%3E%0A");
+                        mask-repeat: no-repeat;
+                        mask-size: 100% 100%;
+                        mask-position: center;
+                    }
+                }
+
+                .seats-available {
+                    text-align: left !important;
+
+                    &::before {
+                        mask: url("data:image/svg+xml,%3Csvg width='16' height='17' viewBox='0 0 16 17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10.4733 8.97374C11.1269 8.45952 11.604 7.75436 11.8382 6.95637C12.0723 6.15838 12.0519 5.30725 11.7799 4.52139C11.5078 3.73552 10.9975 3.054 10.32 2.57165C9.64259 2.08929 8.83163 1.83008 8 1.83008C7.16836 1.83008 6.35741 2.08929 5.67995 2.57165C5.00249 3.054 4.49223 3.73552 4.22014 4.52139C3.94805 5.30725 3.92767 6.15838 4.16184 6.95637C4.396 7.75436 4.87307 8.45952 5.52666 8.97374C4.40672 9.42244 3.42952 10.1666 2.69926 11.127C1.969 12.0874 1.51304 13.2279 1.38 14.4271C1.37037 14.5146 1.37808 14.6032 1.40268 14.6878C1.42729 14.7723 1.46831 14.8512 1.52341 14.92C1.63468 15.0587 1.79652 15.1476 1.97333 15.1671C2.15014 15.1865 2.32744 15.1349 2.46621 15.0237C2.60499 14.9124 2.69388 14.7506 2.71333 14.5737C2.85972 13.2705 3.48112 12.0669 4.45881 11.1929C5.4365 10.3189 6.70193 9.83576 8.01333 9.83576C9.32473 9.83576 10.5902 10.3189 11.5679 11.1929C12.5455 12.0669 13.1669 13.2705 13.3133 14.5737C13.3315 14.7376 13.4096 14.8888 13.5327 14.9984C13.6558 15.108 13.8152 15.1681 13.98 15.1671H14.0533C14.2281 15.147 14.3878 15.0586 14.4977 14.9212C14.6076 14.7839 14.6587 14.6087 14.64 14.4337C14.5063 13.2312 14.0479 12.0877 13.3139 11.1259C12.5799 10.164 11.5979 9.42006 10.4733 8.97374ZM8 8.50041C7.47258 8.50041 6.95701 8.34401 6.51848 8.05099C6.07995 7.75798 5.73815 7.3415 5.53632 6.85423C5.33448 6.36696 5.28168 5.83078 5.38457 5.3135C5.48746 4.79622 5.74144 4.32106 6.11438 3.94812C6.48732 3.57518 6.96247 3.32121 7.47976 3.21831C7.99704 3.11542 8.53322 3.16823 9.02049 3.37006C9.50776 3.5719 9.92423 3.91369 10.2172 4.35222C10.5103 4.79075 10.6667 5.30633 10.6667 5.83374C10.6667 6.54099 10.3857 7.21926 9.88562 7.71936C9.38552 8.21946 8.70724 8.50041 8 8.50041Z' fill='%232183DF'/%3E%3C/svg%3E%0A");
+                        mask-repeat: no-repeat;
+                        mask-size: 100% 100%;
+                        mask-position: center;
+                    }
+
+                    .seats~span {
+                        margin: 5px 0;
+                    }
+                }
+
+                .trip-cost-holder {
+                    text-align: left !important;
+
+                    &::before {
+                        mask: url("data:image/svg+xml,%3Csvg width='16' height='17' viewBox='0 0 16 17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.99969 4.50066C4.8019 4.50066 4.60856 4.55931 4.44412 4.66919C4.27967 4.77907 4.15149 4.93525 4.07581 5.11798C4.00012 5.3007 3.98032 5.50177 4.0189 5.69575C4.05749 5.88973 4.15273 6.06792 4.29258 6.20777C4.43243 6.34762 4.61061 6.44286 4.8046 6.48145C4.99858 6.52003 5.19964 6.50023 5.38237 6.42454C5.5651 6.34885 5.72127 6.22068 5.83116 6.05623C5.94104 5.89178 5.99969 5.69844 5.99969 5.50066C5.99969 5.23545 5.89433 4.98109 5.70679 4.79356C5.51926 4.60602 5.2649 4.50066 4.99969 4.50066ZM14.0797 7.64066L8.47302 2.02733C8.41073 1.96554 8.33685 1.91666 8.25562 1.88348C8.1744 1.8503 8.08742 1.83349 7.99969 1.834H1.99969C1.82287 1.834 1.65331 1.90423 1.52828 2.02926C1.40326 2.15428 1.33302 2.32385 1.33302 2.50066V8.50066C1.33251 8.5884 1.34933 8.67538 1.3825 8.7566C1.41568 8.83783 1.46456 8.9117 1.52635 8.974L7.13969 14.5807C7.51469 14.9552 8.02302 15.1656 8.55302 15.1656C9.08302 15.1656 9.59135 14.9552 9.96635 14.5807L14.0797 10.5007C14.4542 10.1257 14.6646 9.61733 14.6646 9.08733C14.6646 8.55733 14.4542 8.049 14.0797 7.674V7.64066ZM13.1397 9.52066L9.01969 13.634C8.89478 13.7582 8.72581 13.8279 8.54969 13.8279C8.37356 13.8279 8.20459 13.7582 8.07969 13.634L2.66635 8.22733V3.16733H7.72635L13.1397 8.58066C13.2015 8.64296 13.2504 8.71683 13.2835 8.79806C13.3167 8.87928 13.3335 8.96626 13.333 9.054C13.3323 9.22889 13.2628 9.39649 13.1397 9.52066Z' fill='%232183DF'/%3E%3C/svg%3E%0A");
+                        mask-repeat: no-repeat;
+                        mask-size: 100% 100%;
+                        mask-position: center;
+                    }
+                }
+
+                .trip-cost-holder~span {
+                    padding-left: 1.5em;
+                }
+            }
+
+            button.wte-fsd-action {
+                padding: 8px 12px;
+                cursor: pointer;
+                background-color: var(--primary-color);
+                color: #fff;
+                border-color: var(--primary-color);
+
+                &:hover {
+                    opacity: .8;
+                }
+            }
+        }
+    }
+}
+.wp-block-wptravelenginetripblocks-trip-fixed-starting-date select.date-select.wpte-enhanced-select {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 24px 0 16px !important;
+    margin: 0 !important;
+    border: 1px solid #e5e5e5;
+    height: 40px;
+    color: #999;
+    line-height: 28px;
+    font-size: 14px;
+    max-width: unset;
+}

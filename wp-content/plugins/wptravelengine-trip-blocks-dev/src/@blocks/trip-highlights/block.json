@@ -1,0 +1,90 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "wptravelenginetripblocks/trip-highlights",
+  "version": "1.0.0",
+  "title": "Trip Highlights",
+  "category": "widgets",
+  "attributes": {
+    "iconColor": {
+      "type": "string",
+      "label": "Icon Color",
+      "default": "#147dfe",
+      "selectors": "%WRAPPER% .wpte-trip-highlights li::before",
+      "control": {
+        "type": "color",
+        "style": "background-color"
+      },
+      "panel": "-panel-"
+    },
+    "fontSize": {
+      "type": "string",
+      "label": "Font Size",
+      "panel": "-panel-",
+      "default": "16px",
+      "control": {
+        "type": "range",
+        "style": "font-size",
+        "controlAttribute": {
+          "units": [
+            {
+              "unit": "px",
+              "min": 1,
+              "max": 50
+            },
+            {
+              "unit": "em",
+              "min": 1,
+              "max": 8
+            },
+            {
+              "unit": "rem",
+              "min": 1,
+              "max": 8
+            }
+          ]
+        }
+      }
+    },
+    "alignment": {
+      "type": "string",
+      "label": "Alignment",
+      "panel": "-panel-",
+      "control": {
+        "type": "alignment",
+        "style": "text-align",
+        "labels": {
+          "alignment": {
+            "label": "Alignment",
+            "style": "text-align"
+          }
+        }
+      },
+      "default": "left",
+      "selectors": "%WRAPPER% .highlights"
+    }
+  },
+  "supports": {
+    "align": false,
+    "wptravelenginetripblocks": {
+      "colors": {
+        "link": false,
+        "background": true,
+        "text": true
+      },
+      "box-shadow": false,
+      "spacing": {
+        "margin": true,
+        "padding": true
+      },
+      "panels": {
+        "-highlights-": {
+          "title": "Highlights",
+          "icon": "calendar"
+        }
+      }
+    }
+  },
+  "textdomain": "wptravelengine-trip-blocks",
+  "render": "file:./block.php"
+}
